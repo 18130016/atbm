@@ -19,7 +19,7 @@
     <!-- meta character set -->
     <meta charset="UTF-8">
     <!-- Site Title -->
-    <title>Karma Shop</title>
+    <title>Đăng nhập</title>
 
 </head>
 
@@ -34,32 +34,32 @@
                 <div class="login_box_img">
                     <img class="img-fluid" src="img/login.jpg" alt="">
                     <div class="hover">
-                        <h4>New to our website?</h4>
-                        <p>There are advances being made in science and technology everyday, and a good example of this is the</p>
-                        <a class="primary-btn" href="/register">Create an Account</a>
+                        <h4>Bạn chưa có tài khoản?</h4>
+                        <p>Hãy đăng ký ngay để có trải nghiệm mua sắm vui vẻ.</p>
+                        <a class="primary-btn" href="/register">Đăng ký tài khoản</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="login_form_inner">
-                    <h3>Log in to enter</h3>
+                    <h3>Đăng nhập</h3>
                     <form class="row login_form" action="/login" method="post" id="contactForm" novalidate="novalidate">
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="username" name="userName" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+                            <input type="text" class="form-control" id="username" name="userName" placeholder="Tên đăng nhập" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tên đăng nhập'">
                         </div>
                         <div class="col-md-12 form-group">
-                            <input type="password" class="form-control" id="password" name="passWord" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+                            <input type="password" class="form-control" id="password" name="passWord" placeholder="Mật khẩu" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mật khẩu'">
                         </div>
                         <c:if test="${errorMessage != null}">
                             <div class="col-md-12 form-group">
                                 <div class="creat_account">
-                                    <label style="color: red">Incorrect username or password</label>
+                                    <label style="color: red">Sai tên đăng nhập hoặc mật khẩu</label>
                                 </div>
                             </div>
                         </c:if>
                         <div class="col-md-12 form-group">
-                            <button type="submit" value="submit" class="primary-btn">Login</button>
-                            <a href="#">Forgot Password?</a>
+                            <button type="submit" value="submit" class="primary-btn">Đăng nhập</button>
+                            <a href="#">Quên mật khẩu?</a>
                         </div>
                     </form>
                 </div>

@@ -20,7 +20,7 @@
     <!-- meta character set -->
     <meta charset="UTF-8">
     <!-- Site Title -->
-    <title>Karma Shop</title>
+    <title>Đăng ký</title>
 
     <!--
         CSS
@@ -41,36 +41,32 @@
                 <div class="login_box_img">
                     <img class="img-fluid" src="img/login.jpg" alt="">
                     <div class="hover">
-                        <h4>New to our website?</h4>
-                        <p>There are advances being made in science and technology everyday, and a good example of this is the</p>
-                        <a class="primary-btn" href="/login">Login</a>
+                        <h4>Bạn đã có tài khoản?</h4>
+                        <p>Trở về trang đăng nhập</p>
+                        <a class="primary-btn" href="/login">Đăng nhập</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="login_form_inner">
-                    <h3>Log in to enter</h3>
+                    <h3>Đăng ký</h3>
                     <%--@elvariable id="registerForm" type="java"--%>
                     <form:form class="row login_form" action="/register" method="post" modelAttribute="registerForm" novalidate="novalidate">
                         <div class="col-md-12 form-group">
-                            <form:input type="text" class="form-control" id="fullname" path="fullName"  placeholder="Full name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Full name'" />
+                            <form:input type="text" class="form-control" id="fullname" path="fullName"  placeholder="Họ và tên" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Họ và Tên'" />
                         </div>
                         <div class="col-md-12 form-group">
-                            <form:input type="text" class="form-control" id="username" path="userName"  placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'"/>
+                            <form:input type="text" class="form-control" id="username" path="userName"  placeholder="Tên tài khoản" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tên tài khoản'"/>
                         </div>
                         <div class="col-md-12 form-group">
-                            <form:input type="password" class="form-control" id="password" path="passWord"  placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'"/>
+                            <form:input type="password" class="form-control" id="password" path="passWord"  placeholder="Mật khẩu" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mật khẩu'"/>
                         </div>
                         <div class="col-md-12 form-group">
-                            <input type="password" class="form-control" id="comfirmpassword"  placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'"/>
-                        </div>
-
-                        <div class="col-md-12 form-group">
-                            <form:input type="date" class="form-control" id="birthday" path="birthday"  placeholder="Birth day" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Birth day'"/>
+                            <form:input type="text" class="form-control" id="birthday" path="birthday"  placeholder="Ngày sinh" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ngày sinh'"/>
                         </div>
 
                         <div class="col-md-12 form-group">
-                            <button type="submit" value="submit" class="primary-btn">Register</button>
+                            <button type="submit" value="submit" class="primary-btn">Đăng ký</button>
                         </div>
                     </form:form>
                 </div>
