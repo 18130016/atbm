@@ -1,5 +1,8 @@
 package com.baokaka.reponsitory;
 
-public interface UserRepository {
+import com.baokaka.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User ,Long> {
 
 }
