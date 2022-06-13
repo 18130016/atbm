@@ -26,8 +26,32 @@
 <%@ include file="_header.jsp" %>
 <body>
 
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Trang thông tin tài khoản</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="/">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="/account">Tài khoản của tôi</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- My Account Start -->
 <div class="container">
+
+    <c:if test="${sessionScope.user == null}">
+        <div  style="text-align: center">
+            <h2>Vui lòng đăng nhập và thử lại!</h2>
+            <a href="/login"><button>Đăng nhập</button></a>
+        </div>
+    </c:if>
+    <c:if test="${user != null}">
     <div class="my-account">
         <div class="container-fluid">
             <div class="row">
@@ -37,7 +61,7 @@
                         <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i>Đơn hàng</a>
                         <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i class="fa fa-credit-card"></i>Chữ ký xác nhận</a>
                         <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>Địa chỉ</a>
-                        <a class="nav-link" href="/login"><i class="fa fa-sign-out-alt"></i>Đăng xuất</a>
+                        <a class="nav-link" href="/logout"><i class="fa fa-sign-out-alt"></i>Đăng xuất</a>
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -46,23 +70,17 @@
                         <div class="tab-pane fade show active" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
                             <h4>Thông tin tài khoản</h4>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <input class="form-control" type="text" placeholder="First Name">
-                                </div>
-                                <div class="col-md-6">
-                                    <input class="form-control" type="text" placeholder="Last Name">
-                                </div>
-                                <div class="col-md-6">
-                                    <input class="form-control" type="text" placeholder="Mobile">
-                                </div>
-                                <div class="col-md-6">
-                                    <input class="form-control" type="text" placeholder="Email">
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" value="Họ và tên: ${user.getFullName()}">
                                 </div>
                                 <div class="col-md-12">
-                                    <input class="form-control" type="text" placeholder="Address">
+                                    <input class="form-control" type="text" value="Tên đăng nhập: ${user.getUserName()}">
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="btn">Update Account</button>
+                                    <input class="form-control" type="text" value="Ngày sinh: ${user.getBirthday()}">
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="btn">Thay đổi thông tin</button>
                                     <br><br>
                                 </div>
                             </div>
@@ -126,9 +144,18 @@
                         </div>
                         <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
                             <h4>Chữ ký xác nhận</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum quam ac mi viverra dictum. In efficitur ipsum diam, at dignissim lorem tempor in. Vivamus tempor hendrerit finibus. Nulla tristique viverra nisl, sit amet bibendum ante suscipit non. Praesent in faucibus tellus, sed gravida lacus. Vivamus eu diam eros. Aliquam et sapien eget arcu rhoncus scelerisque.
-                            </p>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input id="privateKey" class="form-control" type="text">
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn">Lưu file</button>
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="btn" onclick="createPrivateKey(${user.getId()})" >Tạo khóa bảo mật</button>
+                                    <br><br>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
                             <h4>Địa chỉ</h4>
@@ -153,6 +180,7 @@
             </div>
         </div>
     </div>
+    </c:if>
 </div>
 <!-- My Account End -->
 

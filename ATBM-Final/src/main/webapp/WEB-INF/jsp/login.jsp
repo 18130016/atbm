@@ -45,15 +45,15 @@
                     <h3>Đăng nhập</h3>
                     <form class="row login_form" action="/login" method="post" id="contactForm" novalidate="novalidate">
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="username" name="userName" placeholder="Tên đăng nhập" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tên đăng nhập'">
+                            <input type="text" class="form-control" id="username" name="userName" placeholder="Tên đăng nhập" onfocus="this.placeholder = '', showError()" onblur="this.placeholder = 'Tên đăng nhập'">
                         </div>
                         <div class="col-md-12 form-group">
-                            <input type="password" class="form-control" id="password" name="passWord" placeholder="Mật khẩu" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mật khẩu'">
+                            <input type="password" class="form-control" id="password" name="passWord" placeholder="Mật khẩu" onfocus="this.placeholder = '', showError()" onblur="this.placeholder = 'Mật khẩu'">
                         </div>
                         <c:if test="${errorMessage != null}">
                             <div class="col-md-12 form-group">
                                 <div class="creat_account">
-                                    <label style="color: red">Sai tên đăng nhập hoặc mật khẩu</label>
+                                    <label id="error" style="color: red">Sai tên đăng nhập hoặc mật khẩu</label>
                                 </div>
                             </div>
                         </c:if>

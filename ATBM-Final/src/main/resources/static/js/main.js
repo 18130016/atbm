@@ -555,3 +555,25 @@ $(document).ready(function () {
 
 
 });
+
+function showError(){
+    document.getElementById("error").hidden = true;
+}
+
+function createPrivateKey(id){
+    $.ajax({
+        type:"POST",
+        url:"/createkey",
+        data:{
+            idUser:id
+        },
+        success: function (data) {
+            let dataResponse = data;
+            if(dataResponse != null){
+                $('#privateKey').val(data);
+            }else {
+                $('#privateKey').val("Tạo khóa thất bại");
+            }
+        }
+    });
+}

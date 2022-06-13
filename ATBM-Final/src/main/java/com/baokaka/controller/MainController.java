@@ -70,9 +70,30 @@ public class MainController {
     }
 
     @GetMapping("/account")
-    public String myAccountPage(){
+    public String myAccountPage(Model model, HttpServletRequest request){
+        if(request.getSession().getAttribute("user")==null){
+            return "redirect:/login";
+        }
+        model.addAttribute("user",(User)request.getSession().getAttribute("user"));
         return "my-account";
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:/login";
+    }
+
+    @PostMapping("/createkey")
+    public @ResponseBody
+    String createKey(@RequestParam("idUser") Long idUser){
+        if(idUser!=null){
+            return "baokaka";
+        }
+
+        return null;
+    }
+
 
     
 
