@@ -2,6 +2,8 @@ package com.baokaka.controller;
 
 import com.baokaka.model.Product;
 import com.baokaka.model.User;
+import com.baokaka.reponsitory.ProductRepository;
+import com.baokaka.service.ProductServices;
 import com.baokaka.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,16 +19,24 @@ public class MainController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private ProductServices productServices;
 
-    @RequestMapping({"danh-sach-san-pham","/productList"})
-    public String showShoppingCart(Model model, Product product) {
-        return "productList";
+    @RequestMapping({"danh-sach-san-pham", "/productList"})
+    public String getAllProduct(Model model) {
+        List<Product> list = productServices.listProduct();
+        if (list.size()>0){
+            model.addAttribute("listP", list);
+            model.addAttribute("countP", list.size());
+            return "productList";
+        }
+        return "/";
     }
 
     @RequestMapping({"","/home"})
     public String showHome(Model model) {
 //        return "home";
-        return "productList";
+        return "home";
     }
 
     @GetMapping("/login")
