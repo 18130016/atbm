@@ -24,10 +24,6 @@ public class ProductController {
     @Autowired
     private ProductServices productServices;
 
-
-
-
-
     @GetMapping("/productDetails/{id}")
     public String studentDetailPage(@PathVariable(value = "id") Long id, Optional<Product> products, Model model) {
 

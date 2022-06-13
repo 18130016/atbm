@@ -1,8 +1,11 @@
 package com.baokaka.controller;
 
+import com.baokaka.common.CreateKey;
+import com.baokaka.model.Key;
 import com.baokaka.model.Product;
 import com.baokaka.model.User;
 import com.baokaka.reponsitory.ProductRepository;
+import com.baokaka.service.KeyService;
 import com.baokaka.service.ProductServices;
 import com.baokaka.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.NoSuchAlgorithmException;
 import java.security.Principal;
 import java.util.List;
 
@@ -21,6 +25,8 @@ public class MainController {
     private UserService userService;
     @Autowired
     private ProductServices productServices;
+    @Autowired
+    private KeyService keyService;
 
     @RequestMapping({"danh-sach-san-pham", "/productList"})
     public String getAllProduct(Model model) {
@@ -86,9 +92,23 @@ public class MainController {
 
     @PostMapping("/createkey")
     public @ResponseBody
-    String createKey(@RequestParam("idUser") Long idUser){
+    String createKey(@RequestParam("idUser") Long idUser) throws NoSuchAlgorithmException {
         if(idUser!=null){
-            return "baokaka";
+            CreateKey create = new CreateKey();
+            create.createKey();
+            //neu da co trong csdl thi update key moi
+            if(keyService.checkExist(idUser)){
+                Key k = keyService.findByUserId(idUser);
+                k.setPublicKey(create.getPublickey());
+                keyService.updateKey(k);
+                return create.getPrivatekey();
+            }
+            //neu chua co trong csdl thi tao cai moi
+            Key key =new Key();
+            key.setUserId(idUser);
+            key.setPublicKey(create.getPublickey());
+            keyService.addKey(key);
+            return create.getPrivatekey();
         }
 
         return null;

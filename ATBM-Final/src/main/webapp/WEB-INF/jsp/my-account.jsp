@@ -149,7 +149,7 @@
                                     <input id="privateKey" class="form-control" type="text">
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn">Lưu file</button>
+                                    <button class="btn" onclick="savePrivateKey()">Lưu file</button>
                                 </div>
                                 <div class="col-md-12">
                                     <button class="btn" onclick="createPrivateKey(${user.getId()})" >Tạo khóa bảo mật</button>

@@ -577,3 +577,10 @@ function createPrivateKey(id){
         }
     });
 }
+
+function savePrivateKey(){
+    let data = $('#privateKey').val();
+    var blob = new Blob([data],
+        { type: "text/plain;charset=utf-8" });
+    saveAs(blob, "privateKey.txt");
+}
