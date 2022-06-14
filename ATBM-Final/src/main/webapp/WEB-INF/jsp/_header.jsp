@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="../css/linearicons.css">
     <link rel="stylesheet" href="../css/owl.carousel.css">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
+<%--    <link rel="stylesheet" href="../css/font-awesome.min.css">--%>
     <link rel="stylesheet" href="../css/themify-icons.css">
     <link rel="stylesheet" href="../css/nice-select.css">
     <link rel="stylesheet" href="../css/nouislider.min.css">
@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="../css/ion.rangeSlider.skinFlat.css">
 
     <link rel="stylesheet" href="../css/my-account.css">
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 
 </head>
 <body>
@@ -78,18 +79,30 @@
                             <li class="nav-item submenu dropdown">
                                 <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown" role="button"
                                    aria-haspopup="true"
-                                   aria-expanded="false"><span class=" ti-user" style="margin-right: 10px"></span>  Chào ${user.fullName}</a>
+                                   aria-expanded="false"><span class="fa fa-user-circle-o fa-2x"
+                                                               style="margin-right: 10px"></span> Chào ${user.fullName}
+                                </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item"><a class="nav-link" href="/account">Tài khoản của tôi</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Đăng xuất</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/logout">Đăng xuất</a></li>
                                 </ul>
                             </li>
                         </c:if>
                         </li>
-<%--                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>--%>
+                        <%--                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>--%>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+                        <li class="nav-item">
+                            <c:if test="${user==null}"> <a href="/gio-hang-cua-toi" class="nav-link">
+                                <span class="fa fa-shopping-bag fa-2x"></span>
+                            </a></c:if>
+                            <c:if test="${user!=null}">
+                                <a  href="/gio-hang-cua-toi" class="nav-link">
+                                <span  class="fa fa-shopping-bag fa-2x"></span>
+
+                            </a></c:if>
+
+                        </li>
 
                         <li class="nav-item">
 

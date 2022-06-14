@@ -16,7 +16,7 @@
     <div class="container">
         <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
             <div class="col-first">
-                <h1>Product Details Page</h1>
+                <h1>CHI TIẾT SẢN PHẨM</h1>
                 <nav class="d-flex align-items-center">
                     <a href="/">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
                     <a href="/danh-sach-san-pham">Danh sách sản phẩm<span class="lnr lnr-arrow-right"></span></a>
@@ -35,13 +35,13 @@
             <div class="col-lg-6">
                 <div class="s_Product_carousel">
                     <div class="single-prd-item">
-                        <img class="img-fluid" src="/image/display/${id}" alt="">
+                        <img class="img-fluid" src="/image/display/${id}" alt="Hình ảnh của ${name}">
                     </div>
                     <div class="single-prd-item">
-                        <img class="img-fluid" src="../img/category/s-p1.jpg" alt="">
+                        <img class="img-fluid" src="../img/category/${id}" alt="">
                     </div>
                     <div class="single-prd-item">
-                        <img class="img-fluid" src="../img/category/s-p1.jpg" alt="">
+                        <img class="img-fluid" src="../img/category/${id}" alt="">
                     </div>
                 </div>
             </div>
@@ -61,19 +61,62 @@
                         something that can make your interior look awesome, and at the same time give you the pleasant
                         warm feeling
                         during the winter.</p>
-                    <div class="product_count">
-                        <label >Quantity:</label>
-                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                               class="input-text qty">
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                    <div style="margin: 20px">
+                        <label for="qty">Số lượng:</label>
+                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 1 ) result.value--;return false;"
+                                class="btn primary circle arrow" type="button"><i class="lnr ti-minus"></i></button>
+                        <input type="text" name="qty" id="sst" maxlength="3" value="1" title="Quantity:"
+                               class="text-center" disabled size="5">
+                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )  &amp;&amp; sst <15 ) result.value++;return false;"
+                                class=" btn primary circle arrow" type="button"><i class="lnr ti-plus"></i></button>
+
+
                     </div>
                     <div class="card_area d-flex align-items-center">
-                        <a class="primary-btn" href="#">Add to Cart</a>
-                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+                        <c:if test="${user!=null}">
+                            <a class="primary-btn" href="javascript:addCart();">Thêm vào giỏ hàng</a>
+                        </c:if>
+                        <c:if test="${user==null}">
+                            <div class="text-center">
+                                <!-- Button HTML (to Trigger Modal) -->
+                                <a href="#myModal" class="genric-btn primary circle arrow"
+                                   data-toggle="modal">
+
+                                    Thêm vào giỏ</a>
+
+                            </div>
+                            <!-- Modal HTML -->
+                            <div id="myModal" class="modal fade">
+                                <div class="modal-dialog modal-confirm">
+                                    <div class="modal-content">
+                                        <div class="modal-header justify-content-center">
+                                            <div class="icon-box">
+                                                <i class="material-icons"></i>
+                                            </div>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">&times;
+                                            </button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <h4>Để có thêm thêm sản phẩm vào giỏ.</h4>
+                                            <p>Bạn cần phải đăng nhập!</p>
+                                            <a class="primary-btn" href="/login">Đăng nhập</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:if>
+
+                        <a class="btn align-content-center" href="#"><i class=" lnr lnr-diamond"></i></a>
+                        <a class="btn" href="#"><i class=" lnr lnr-heart"></i></a>
+                        <script type="text/javascript">
+                            function addCart(){
+                                var qty = document.getElementById('sst').value;
+                               addToCart(${id},qty);
+                            }
+                        </script>
+
                     </div>
                 </div>
             </div>
@@ -217,37 +260,46 @@
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
                 <p>
-                    Một sản phẩm không vừa size thì không thể nào đi được. Đi đổi hàng thì rất mất thời gian và công sức.
+                    Một sản phẩm không vừa size thì không thể nào đi được. Đi đổi hàng thì rất mất thời gian và công
+                    sức.
 
                     Nên Merly có chính sách đổi hàng cực ngắn gọn:
 
-                    - Khách hàng được đổi  sản phẩm trong vòng 30 ngày kể từ ngày nhận được sản phẩm.
+                    - Khách hàng được đổi sản phẩm trong vòng 30 ngày kể từ ngày nhận được sản phẩm.
 
-                    - Bất kỳ sản phẩm nào đặt mua tại Merly (ngoại trừ hàng giảm giá trên 20%) cũng được áp dụng chính sách này.
+                    - Bất kỳ sản phẩm nào đặt mua tại Merly (ngoại trừ hàng giảm giá trên 20%) cũng được áp dụng chính
+                    sách này.
 
-                    - Trường hợp đổi, khách hàng sẽ chịu chi phí vận chuyển chỉ với 35.000 VNĐ, và Merly sẽ giao lại hàng miễn phí cho Khách hàng (Merly đã hỗ trợ 1 phần phí giao hàng).
+                    - Trường hợp đổi, khách hàng sẽ chịu chi phí vận chuyển chỉ với 35.000 VNĐ, và Merly sẽ giao lại
+                    hàng miễn phí cho Khách hàng (Merly đã hỗ trợ 1 phần phí giao hàng).
 
-                    - Trường hợp trả đổi với hàng lỗi hoặc giao hàng sai mẫu, Merly sẽ hoàn lại tiền hàng  cho khách trong vòng 24h qua tài khoản của khách.
+                    - Trường hợp trả đổi với hàng lỗi hoặc giao hàng sai mẫu, Merly sẽ hoàn lại tiền hàng cho khách
+                    trong vòng 24h qua tài khoản của khách.
 
-                    Sau đó, Merly sẽ đến tận nơi lấy hàng trả và không thu thêm bất cứ phí gì (Khách hàng cũng có thể tự gởi lại hàng cho Merly)
+                    Sau đó, Merly sẽ đến tận nơi lấy hàng trả và không thu thêm bất cứ phí gì (Khách hàng cũng có thể tự
+                    gởi lại hàng cho Merly)
 
                     3 Bước nhanh chóng để đổi trả:
 
                     Bước 1: Nhắn tin vào nơi đã đặt hàng. Hoăc gọi 0908 1908 56 để được hướng dẫn.
 
-                    Bước 2: Gửi hình xác nhận tình trạng đế giày cho Merly. Merly chỉ đổi hoặc trả sản phẩm chưa qua sử dụng đế giày còn mới.
+                    Bước 2: Gửi hình xác nhận tình trạng đế giày cho Merly. Merly chỉ đổi hoặc trả sản phẩm chưa qua sử
+                    dụng đế giày còn mới.
 
-                    Bước 3: Gói hàng lại và đợi shipper gọi điện thoại đến lấy hàng đồng thời nhận luôn sản phẩm cần đổi.
+                    Bước 3: Gói hàng lại và đợi shipper gọi điện thoại đến lấy hàng đồng thời nhận luôn sản phẩm cần
+                    đổi.
 
                     Đối với việc trả hàng:
 
-                    Chúng tôi sẽ hoàn lại số tiền vào tài khoản mà bạn xác nhận tối đa trong 24h làm việc (không tính thứ 7 & Chủ Nhật).
+                    Chúng tôi sẽ hoàn lại số tiền vào tài khoản mà bạn xác nhận tối đa trong 24h làm việc (không tính
+                    thứ 7 & Chủ Nhật).
 
                     Lưu ý:
 
                     ⁃ Merly hỗ trợ đổi tối đa 3 lần/1 khách hàng.
 
-                    ⁃ Merly có quyền quyết định dừng việc hỗ trợ đổi trả và trả lại tiền cho khách hàng nếu phát hiện khách hàng sử dụng chính sách để trục lợi (như việc đổi quá nhiều lần).
+                    ⁃ Merly có quyền quyết định dừng việc hỗ trợ đổi trả và trả lại tiền cho khách hàng nếu phát hiện
+                    khách hàng sử dụng chính sách để trục lợi (như việc đổi quá nhiều lần).
 
 
                 </P>

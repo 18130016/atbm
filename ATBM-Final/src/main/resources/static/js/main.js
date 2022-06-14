@@ -556,24 +556,99 @@ $(document).ready(function () {
 
 });
 
-function showError(){
+function showError() {
     document.getElementById("error").hidden = true;
 }
 
-function createPrivateKey(id){
+function createPrivateKey(id) {
     $.ajax({
-        type:"POST",
-        url:"/createkey",
-        data:{
-            idUser:id
+        type: "POST",
+        url: "/createkey",
+        data: {
+            idUser: id
         },
         success: function (data) {
             let dataResponse = data;
-            if(dataResponse != null){
+            if (dataResponse != null) {
                 $('#privateKey').val(data);
-            }else {
+            } else {
                 $('#privateKey').val("Tạo khóa thất bại");
             }
+        }
+    });
+}
+
+function saveCart(id, pri, idIt, obj) {
+    $.ajax({
+        url: "/cart-update",
+        type: "POST",
+        data: 'pid=' + id + '&qty=' + obj,
+
+        success: function (data) {
+            $(idIt).html((obj * pri) + "đ")
+
+        }
+    });
+}
+
+function checkCartItem(e, id) {
+    var mycheck = document.getElementById(e);
+    if (mycheck.checked == true) {
+        checkBoxCart(e, id)
+    } else if (mycheck.checked == false) {
+        uncheckBoxCart(e, id)
+    }
+};
+
+function checkBoxCart(id, idItem) {
+    $.ajax({
+        url: "/cart-check-out",
+        type: "POST",
+        data: 'cartId=' + idItem,
+
+        success: function (data) {
+
+            let dataResponse = data;
+            if (dataResponse != null) {
+                console.log(data)
+            } else {
+                console.log(data)
+            }
+        }
+    });
+
+}
+
+function uncheckBoxCart(id, idItem) {
+    $.ajax({
+        url: "/cart-uncheck-out",
+        type: "POST",
+        data: 'cartId=' + idItem,
+
+        success: function (data) {
+            let dataResponse = data;
+            if (dataResponse != null) {
+                console.log(data)
+            } else {
+                console.log(data)
+            }
+        }
+    });
+}
+function addToCart(pid,qty){
+    $.ajax({
+        url: "/add-to-cart",
+        type: "POST",
+        data: 'pid=' + pid+'&qty='+qty,
+
+        success: function (data) {
+            $('#countCartSize').val(data);
+            Swal.fire(
+                'Đã thêm sản phẩm vào giỏ',
+                'Bạn có thể xem sản phẩm tại giỏ hàng!',
+                'success'
+            )
+
         }
     });
 }

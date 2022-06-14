@@ -17,7 +17,7 @@ public class Product {
     private String description;
 
     @Column(name = "price", nullable = false, precision = 10, scale = 2)
-    private double price;
+    private int price;
 
     @Lob
     @Column(name = "Image", length = Integer.MAX_VALUE, nullable = true)
@@ -51,11 +51,11 @@ public class Product {
         this.description = description;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
