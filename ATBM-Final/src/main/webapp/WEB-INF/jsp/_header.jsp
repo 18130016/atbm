@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="../css/linearicons.css">
     <link rel="stylesheet" href="../css/owl.carousel.css">
-<%--    <link rel="stylesheet" href="../css/font-awesome.min.css">--%>
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/themify-icons.css">
     <link rel="stylesheet" href="../css/nice-select.css">
     <link rel="stylesheet" href="../css/nouislider.min.css">
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="../css/ion.rangeSlider.skinFlat.css">
 
     <link rel="stylesheet" href="../css/my-account.css">
-    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+
 
 </head>
 <body>
@@ -94,11 +94,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nav-item">
                             <c:if test="${user==null}"> <a href="/gio-hang-cua-toi" class="nav-link">
-                                <span class="fa fa-shopping-bag fa-2x"></span>
+                                <span class="fa fa-shopping-bag "></span>
                             </a></c:if>
                             <c:if test="${user!=null}">
                                 <a  href="/gio-hang-cua-toi" class="nav-link">
-                                <span  class="fa fa-shopping-bag fa-2x"></span>
+                                <span  class="fa fa-shopping-bag "></span>
 
                             </a></c:if>
 
@@ -106,7 +106,7 @@
 
                         <li class="nav-item">
 
-                            <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+                            <a class=" nav-link"><span class="fa fa-search " id="search"></span></a>
                         </li>
 
 

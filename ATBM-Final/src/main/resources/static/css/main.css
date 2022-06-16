@@ -999,6 +999,10 @@ h1, h2, h3, h4, h5, h6 {
     .sticky-wrapper {
       top: 0; } }
 
+.navbar-collapse {
+  flex-grow: unset;
+}
+
 .header_area {
   position: absolute;
   width: 100%;
@@ -1025,8 +1029,9 @@ h1, h2, h3, h4, h5, h6 {
     border: 0px;
     border-radius: 0px; }
     @media (max-width: 991px) {
-      .header_area .navbar .navbar-collapse {
-        margin-top: 30px; }
+      .header_area .navbar{
+        margin-top: 30px;
+      }
         .header_area .navbar .navbar-collapse .nav-item {
           padding: 10px; } }
     .header_area .navbar .navbar-toggler .icon-bar {
@@ -1034,7 +1039,6 @@ h1, h2, h3, h4, h5, h6 {
       height: 2px;
       width: 20px;
       content: "";
-      background: #000;
       display: block;
       margin: 5px; }
     .header_area .navbar .nav .nav-item {
@@ -1043,7 +1047,7 @@ h1, h2, h3, h4, h5, h6 {
         text-transform: uppercase;
         padding: 0px;
         display: inline-block;
-        font-size: 12px;
+        font-size: 17px;
         font-weight: 500;
         color: #222222; }
         @media (min-width: 991px) {
@@ -1589,7 +1593,7 @@ h1, h2, h3, h4, h5, h6 {
 .exclusive-deal-area {
   background: #f9f9ff; }
   .exclusive-deal-area .exclusive-left {
-    position: realtive;
+    position: relative;
     background: url(../img/exclusive.jpg) center no-repeat;
     background-size: cover;
     text-align: center;
@@ -1604,7 +1608,6 @@ h1, h2, h3, h4, h5, h6 {
       height: 100%;
       width: 100%;
       content: "";
-      background: #000;
       opacity: .5; }
     .exclusive-deal-area .exclusive-left .clock_sec {
       padding: 0 190px; }

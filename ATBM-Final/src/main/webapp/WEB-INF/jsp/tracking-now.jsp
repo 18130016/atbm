@@ -30,22 +30,24 @@
 <section class="tracking_box_area section_gap">
     <div class="container">
         <div class="tracking_box_inner">
-            <p>To track your order please enter your Order ID in the box below and press the "Track" button. This
-                was given to you on your receipt and in the confirmation email you should have received.</p>
-            <form class="row tracking_form" action="#" method="post" novalidate="novalidate">
-                <div class="col-md-12 form-group">
-                    <input type="text" class="form-control" id="order" name="order" placeholder="Order ID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Order ID'">
+            <p>Nhập mã xác nhận để xác nhận đơn hàng</p>
+            <div class="tracking_form row">
+                <div class="col-md-9 form-group">
+                    <input type="text" class="form-control" id="code-order"  value="${codeoder}" disabled>
                 </div>
-                <div class="col-md-12 form-group">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Billing Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Billing Email Address'">
+                <div class="col-md-3 form-group">
+                    <button  onclick="copyCodeOrder()" class="primary-btn">Sao chép</button>
                 </div>
+
                 <div class="col-md-12 form-group">
-                    <button type="submit" value="submit" class="primary-btn">Track Order</button>
+                    <input type="text" class="form-control" id="decodeText" placeholder="Billing Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mã xác nhận'">
                 </div>
-            </form>
+                <div class="col-md-3 form-group">
+                    <button onclick="checkCodeOrder(${sessionScope.user.id})" class="primary-btn">Xác nhận đơn hàng</button>
+                </div>
+            </div>
         </div>
 
-       <a href="#" onclick="alertNoti('info','Nó nè:',' CODE: ${codeoder}')">Code ở đây này</a>
     </div>
 </section>
 

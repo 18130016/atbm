@@ -696,8 +696,38 @@ function tocheckout(){
         }
     });
 }
-function codeOder(a){
-  alertNoti('info','code nè',a);
+function codeOder(){
+  alertNoti('info','code nè');
+}
+
+ function copyCodeOrder(){
+     var copyText =  document.getElementById("code-order");
+     /* Select the text field */
+     copyText.select();
+     copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+     /* Copy the text inside the text field */
+     navigator.clipboard.writeText(copyText.value);
+     alertNoti('info',"Đã sao chép");
+ }
+
+function checkCodeOrder(){
+    let text =  $('#decodeText').val();
+    $.ajax({
+        url:"/tracking-order",
+        type:"POST",
+        data:{
+            decodeText:text
+        },
+        success: function (data){
+            let t = data;
+            if(t=="true"){
+                alertNoti('info',"Xác nhận thành công");
+            }else {
+                alertNoti('info',"Xác nhận thất bại");
+            }
+    }
+    })
 }
 
 

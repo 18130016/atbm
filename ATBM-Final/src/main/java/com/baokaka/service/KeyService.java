@@ -5,6 +5,8 @@ import com.baokaka.reponsitory.KeyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.PublicKey;
+
 @Service
 public class KeyService {
 
@@ -29,6 +31,14 @@ public class KeyService {
             if(key.getUserId()==userId){
                 return key;
             }
+        }
+        return null;
+    }
+
+    public String findPublicKeyByUserId(Long userId){
+        Key k = findByUserId(userId);
+        if(k!=null){
+            return k.getPublicKey();
         }
         return null;
     }

@@ -26,6 +26,21 @@
 <%@ include file="_header.jsp" %>
 <body>
 
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Trang đăng nhập</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="/">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="/account">Đăng nhập</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!--================Login Box Area =================-->
 <section class="login_box_area section_gap">
     <div class="container">

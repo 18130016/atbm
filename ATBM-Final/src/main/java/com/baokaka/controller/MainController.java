@@ -1,14 +1,12 @@
 package com.baokaka.controller;
 
 import com.baokaka.common.CreateKey;
+import com.baokaka.common.RSA;
 import com.baokaka.model.Key;
 import com.baokaka.model.Product;
 import com.baokaka.model.User;
 import com.baokaka.reponsitory.ProductRepository;
-import com.baokaka.service.KeyService;
-import com.baokaka.service.OrderServices;
-import com.baokaka.service.ProductServices;
-import com.baokaka.service.UserService;
+import com.baokaka.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +26,9 @@ public class MainController {
     private ProductServices productServices;
     @Autowired
     private KeyService keyService;
+
+    @Autowired
+    private CartService cartService;
 
     @Autowired
     private OrderServices orderServices;
@@ -120,14 +121,36 @@ public class MainController {
 
 
     @GetMapping("/tracking-now")
-    public  String toTtracking(HttpServletRequest request, Model model){
-        if(request.getSession().getAttribute("user")==null){
+    public  String toTtracking(HttpServletRequest request, Model model) throws Exception {
+        User user = (User) request.getSession().getAttribute("user");
+        if(user == null){
             return "redirect:/login";
         }
-//        test code
-        orderServices.createOderCode();
-       model.addAttribute("codeoder",orderServices.orderCode);
+        if(cartService.getListChossePay().size()==0){
+            return "redirect:/cart";
+        }
+        if(!keyService.checkExist(user.getId())){
+            return "redirect:account#payment-tab";
+        }
+            CreateKey keyCreate = new CreateKey();
+            orderServices.createOderCode();
+            String code =  RSA.encryptText(orderServices.orderCode,
+                    keyCreate.convertPublicKey("RSA",
+                            keyService.findPublicKeyByUserId(user.getId())
+                    )
+            );
+            model.addAttribute("codeoder",code);
+
         return "tracking-now";
+    }
+
+    @PostMapping("/tracking-order")
+    @ResponseBody
+    public String trackingOrder(@RequestParam("decodeText") String decodeText){
+        if(decodeText.equalsIgnoreCase(orderServices.orderCode)){
+            return "true";
+        }
+        return "false";
     }
 
 
