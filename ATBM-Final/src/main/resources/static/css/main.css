@@ -5791,5 +5791,8 @@ label {
     color: #ffba00; }
 
 /*# sourceMappingURL=main.css.map */
-
-
+.vietnamdong:before { content:'đ'; }
+ .abcxyz{
+  inline-size: 75px;
+   overflow-wrap: break-word;
+}

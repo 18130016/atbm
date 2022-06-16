@@ -585,8 +585,14 @@ function saveCart(id, pri, idIt, obj) {
         data: 'pid=' + id + '&qty=' + obj,
 
         success: function (data) {
-            $(idIt).html((obj * pri) + "đ")
+            $(idIt).html(obj * pri)
+            let x = document.querySelectorAll(idIt);
+            for (let i = 0, len = x.length; i < len; i++) {
+                let num = Number(x[i].innerHTML)
+                    .toLocaleString('vn');
+                x[i].innerHTML = num+ '&#x20AB;';
 
+            }
         }
     });
 }
@@ -607,14 +613,18 @@ function checkBoxCart(id, idItem) {
         data: 'cartId=' + idItem,
 
         success: function (data) {
+            $('#litao').html("");
+            var text =""
+              for (let i = 0; i < data.length; i++) {
+                   text += '<li ="li'+data[i].id+'"><a href="#" class="abcxyz">'+ data[i].product.name+' <span class="middle">x '+data[i].quantity+'</span> <span class="myDIV last">'+data[i].subtotal+'</span></a> </li>';
 
-            let dataResponse = data;
-            if (dataResponse != null) {
-                console.log(data)
-            } else {
-                console.log(data)
             }
+            $('#litao').html(text )
+         ;
         }
+
+
+
     });
 
 }
@@ -626,13 +636,14 @@ function uncheckBoxCart(id, idItem) {
         data: 'cartId=' + idItem,
 
         success: function (data) {
-            let dataResponse = data;
-            if (dataResponse != null) {
-                console.log(data)
-            } else {
-                console.log(data)
+            $('#litao').html("");
+            var text =""
+            for (let i = 0; i < data.length; i++) {
+                    text += '<li  id="li'+data[i].id+'"><a href="#" class="abcxyz" >'+ data[i].product.name+' <span class="middle">x '+data[i].quantity+'</span> <span class="myDIV last" >'+data[i].subtotal+'</span></a> </li>';
+
+                }
+            $('#litao').html(text );
             }
-        }
     });
 }
 function addToCart(pid,qty){
@@ -659,3 +670,34 @@ function savePrivateKey(){
         { type: "text/plain;charset=utf-8" });
     saveAs(blob, "privateKey.txt");
 }
+function alertNoti(status,content,description){
+    Swal.fire(
+        content,
+        description,
+        status
+    )
+}
+function tocheckout(){
+    $.ajax({
+        url: "/checkSize",
+        type: "GET",
+        data:{} ,
+
+        success: function (data) {
+
+            let dataResponse = data;
+            if (dataResponse > 0) {
+               window.location = "/checkout";
+            } else {
+              alertNoti('info','Chưa chọn sản phẩm', 'Vui lòng chọn sản phẩm!')
+            }
+
+
+        }
+    });
+}
+function codeOder(a){
+  alertNoti('info','code nè',a);
+}
+
+

@@ -11,13 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.security.Principal;
-import java.util.ArrayList;
+import java.math.BigDecimal;
+
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
+import java.util.spi.LocaleNameProvider;
 
 @Controller
 public class ShoppingCartController {
@@ -71,39 +72,60 @@ public class ShoppingCartController {
     }
 
     @PostMapping("/cart-check-out")
-    public @ResponseBody void addItemCheckOut(@RequestParam("cartId") Long cartItemId, HttpServletRequest request, Model model) {
+    public @ResponseBody List<CartItem> addItemCheckOut(@RequestParam("cartId") Long cartItemId, HttpServletRequest request, Model model) {
         User customer = (User) request.getSession().getAttribute("user");
         if (customer != null) {
             List<CartItem> cartItemList = cartService.findCartItemById(cartItemId, customer);
             if (cartItemList.size() != 0) {
                 model.addAttribute("cartItemList", cartItemList);
+                model.addAttribute("subTotal", cartService.totalPay());
                 for (CartItem c : cartItemList
                 ) {
                     System.out.println("Sản phẩm :" + c.getProduct().getName());
                 }
                 System.out.println("--------------------");
-
+return cartItemList;
             }
         }
+        return null;
     }
 
     @PostMapping("/cart-uncheck-out")
-    public @ResponseBody void removeItemCheckOut(@RequestParam("cartId") Long cartItemId, HttpServletRequest request, Model model) {
+    public @ResponseBody List<CartItem> removeItemCheckOut(@RequestParam("cartId") Long cartItemId, HttpServletRequest request, Model model) {
         User customer = (User) request.getSession().getAttribute("user");
         if (customer != null) {
             List<CartItem> cartItemList = cartService.removeCartCheckout(cartItemId, customer);
             if (cartItemList.size() != 0) {
                 model.addAttribute("cartItemList", cartItemList);
+                model.addAttribute("listItem", cartService.getListChossePay());
+                model.addAttribute("subTotal", cartService.totalPay());
                 for (CartItem c : cartItemList
                 ) {
                     System.out.println("Sản phẩm :" + c.getProduct().getName());
                 }
                 System.out.println("--------------------");
-
+                return cartItemList;
             }
         }
-        
 
+        return null;
     }
+
+    @GetMapping("/checkout")
+    public String showCheckoutPage(HttpServletRequest request, Model model) {
+        User customer = (User) request.getSession().getAttribute("user");
+        if (customer == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user",customer);
+        model.addAttribute("listItem", cartService.getListChossePay());
+        model.addAttribute("subTotal", cartService.totalPay());
+        return "checkout";
+    }
+@GetMapping("/checkSize")
+public @ResponseBody int checkStatusCart(){
+    return cartService.getListChossePay().size();
+}
+
 
 }

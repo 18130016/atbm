@@ -6,6 +6,7 @@ import com.baokaka.model.Product;
 import com.baokaka.model.User;
 import com.baokaka.reponsitory.ProductRepository;
 import com.baokaka.service.KeyService;
+import com.baokaka.service.OrderServices;
 import com.baokaka.service.ProductServices;
 import com.baokaka.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ public class MainController {
     @Autowired
     private KeyService keyService;
 
+    @Autowired
+    private OrderServices orderServices;
     @RequestMapping({"danh-sach-san-pham", "/productList"})
     public String getAllProduct(Model model) {
         List<Product> list = productServices.listProduct();
@@ -115,7 +118,17 @@ public class MainController {
     }
 
 
-    
+
+    @GetMapping("/tracking-now")
+    public  String toTtracking(HttpServletRequest request, Model model){
+        if(request.getSession().getAttribute("user")==null){
+            return "redirect:/login";
+        }
+//        test code
+        orderServices.createOderCode();
+       model.addAttribute("codeoder",orderServices.orderCode);
+        return "tracking-now";
+    }
 
 
 

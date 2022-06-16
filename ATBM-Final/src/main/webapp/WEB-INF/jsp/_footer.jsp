@@ -93,6 +93,14 @@
 <script src="../js/main.js"></script>
 <script src="../js/fileSave.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
+<script language="JavaScript">
+    let x = document.querySelectorAll(".myDIV");
+    for (let i = 0, len = x.length; i < len; i++) {
+        let num = Number(x[i].innerHTML)
+            .toLocaleString('vn');
+        x[i].innerHTML = num+ '&#x20AB;';
+
+    }
 </script>
 
 </body>

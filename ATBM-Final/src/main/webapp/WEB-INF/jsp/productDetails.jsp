@@ -49,7 +49,7 @@
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
                     <h3>${name}</h3>
-                    <h2>${price} đ</h2>
+                    <h2 class="myDIV">${price}</h2>
                     <ul class="list">
                         <li><a class="active" href="#"><span>Category</span> : Household</a></li>
                         <li><a href="#"><span>Availibility</span> : In Stock</a></li>

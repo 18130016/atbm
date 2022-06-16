@@ -25,10 +25,11 @@ public class CartService {
     }
 
 
-    public Integer getCartSizeByCustomer(User customer){
+    public Integer getCartSizeByCustomer(User customer) {
         Integer result = cartRepo.findByCustomer(customer).size();
         return result;
     }
+
     public List<CartItem> listChossePay = new ArrayList<>();
 
     public Integer addProduct(Long productId, Integer quantity, User customer) {
@@ -85,6 +86,21 @@ public class CartService {
         return listChossePay;
     }
 
+    public List<CartItem> getListChossePay() {
+        return listChossePay;
+    }
+
+    public int totalPay() {
+        int result = 0;
+        if (listChossePay.size() != 0) {
+            for (int i = 0; i < listChossePay.size(); i++) {
+                result += listChossePay.get(i).getQuantity() * listChossePay.get(i).getProduct().getPrice();
+            }
+            return result;
+        }
+        return result;
+    }
+
     //Uncheck sản phẩm
     public List<CartItem> removeCartCheckout(Long id, User user) {
         CartItem cartItem = cartRepo.findByIdAndCustomer(id, user);
@@ -104,8 +120,9 @@ public class CartService {
         }
         return listChossePay;
     }
+
     //restart list khi redirect tới giỏ hàng
-    public  void restartListItemCheckout(){
+    public void restartListItemCheckout() {
         listChossePay.clear();
     }
 

@@ -300,8 +300,8 @@
                                     <a class="hover-text" href="/productDetails/${products.id}"><h6
                                             style="min-height: 75px">${products.name}</h6></a>
                                     <div class="price" style="min-height: 40px">
-                                        <h6>${products.price} đ </h6>
-                                        <h6 class="l-through">${products.price*1.1}</h6>
+                                        <h6 class="myDIV">${products.price} </h6>
+                                        <h6 class="l-through myDIV">${products.price*1.1}</h6>
                                     </div>
                                     <div class="prd-bottom" style="display: flex;font-size: medium">
                                         <c:if test="${user==null}">
