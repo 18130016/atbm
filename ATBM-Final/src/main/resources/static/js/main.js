@@ -615,12 +615,16 @@ function checkBoxCart(id, idItem) {
         success: function (data) {
             $('#litao').html("");
             var text =""
+            var total=0;
               for (let i = 0; i < data.length; i++) {
-                   text += '<li ="li'+data[i].id+'"><a href="#" class="abcxyz">'+ data[i].product.name+' <span class="middle">x '+data[i].quantity+'</span> <span class="myDIV last">'+data[i].subtotal+'</span></a> </li>';
-
+                   text += '<li ="li'+data[i].id+'"><a  class="abcxyz">'+ data[i].product.name+'  x'+data[i].quantity+'</span> <span class="myDIV last">'+data[i].subtotal+'đ</span></a> </li>';
+                  total+=data[i].subtotal;
             }
             $('#litao').html(text )
-         ;
+            $('#subTotal').html('<span className="myDIV" id="total">'+(total+25000)+'đ</span>');
+            $('#total').html('<span className="myDIV" id="total">'+total+'đ</span>');
+
+            ;
         }
 
 
@@ -637,12 +641,15 @@ function uncheckBoxCart(id, idItem) {
 
         success: function (data) {
             $('#litao').html("");
-            var text =""
+            var text ="";
+            var total=0;
             for (let i = 0; i < data.length; i++) {
-                    text += '<li  id="li'+data[i].id+'"><a href="#" class="abcxyz" >'+ data[i].product.name+' <span class="middle">x '+data[i].quantity+'</span> <span class="myDIV last" >'+data[i].subtotal+'</span></a> </li>';
-
+                    text += '<li  id="li'+data[i].id+'"><a  class="abcxyz" >'+ data[i].product.name+'  (x'+data[i].quantity+')</span> <span class="myDIV last" >'+data[i].subtotal+'đ</span></a> </li>';
+                total+=data[i].subtotal;
                 }
             $('#litao').html(text );
+            $('#subTotal').html('<span className="myDIV" id="total">'+(total+25000)+'đ</span>');
+            $('#total').html('<span className="myDIV" id="total">'+total+'đ</span>');
             }
     });
 }
@@ -715,7 +722,7 @@ function checkCodeOrder(){
     let text =  $('#decodeText').val();
     $.ajax({
         url:"/tracking-order",
-        type:"POST",
+        type:"GET",
         data:{
             decodeText:text
         },
@@ -723,11 +730,77 @@ function checkCodeOrder(){
             let t = data;
             if(t=="true"){
                 alertNoti('info',"Xác nhận thành công");
+                window.location= "/xac-nhan-don-hang";
             }else {
                 alertNoti('info',"Xác nhận thất bại");
             }
     }
     })
 }
+function addNewAddress(){
+    let phone =  $('#phone').val();
+    let province =  $('#Province').val();
+    let districts =  $('#districts').val();
+    let wards =  $('#wards').val();
+    let addressDetails =  $('#addressDetails').val();
+    $.ajax({
+        url:"/add-address",
+        type:"POST",
+        data:
+            'phone='+phone+'&province='+province+'&districts='+districts+'&wards='+wards+'&addressDetails='+addressDetails
+        ,
+        success: function (data){
+            let t = data;
+            if(t!=null){
 
+                // $('#addressCre').html("");
+                // var text ="";
+                // for (let i = 0; i < data.length; i++) {
+                //  text += '<div className="col-md-6"> <h5>Địa chỉ giao hàng</h5> <p>'+data[i].wards +', '+data[i].districts+', '+ data[i].province+'</p> <p>Số điện thoại: '+data[i].phone+'</p> <button className="btn" onclick="deleteAddress('+data[i].id+')">Xóa</button></div>'
+                //
+                // }
+
+                alertNoti('success',"Tạo địa chỉ thành công");
+                window.location.reload();
+                // $('#addressCre').html(text);
+            }else {
+                alertNoti('error',"Tạo địa chỉ thất bại");
+            }
+        }
+    })
+}
+function deleteAddress(id){
+    $.ajax({
+        url:"/delete-address",
+        type:"POST",
+        data:
+            {adId: id},
+        success: function (data){
+            let t = data;
+            if(t!=null){
+                alertNoti('success',"Đã xóa địa  chỉ thành công");
+
+                setTimeout(() => window.location.reload(), 1500);
+            }else {
+                alertNoti('error',"Xóa địa chỉ thất bại");
+            }
+        }
+    })
+}
+function tickAddress(id){
+    $.ajax({
+        url:"/tick-address",
+        type:"POST",
+        data:
+            {adId: id},
+        success: function (data){
+            let t = data;
+            if(t!=null){
+                alertNoti('info',data);
+            }else {
+                alertNoti('error',"");
+            }
+        }
+    })
+}
 

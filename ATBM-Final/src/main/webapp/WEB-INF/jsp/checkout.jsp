@@ -30,42 +30,82 @@
         <div class="billing_details">
             <div class="row">
                 <div class="col-lg-6">
-                    <h3>Chi tiết thanh toán</h3>
-                    <div class="col-md-12 form-group">
-                        <input type="text" class="form-control" id="fname" name="fname" placeholder="Họ và tên">
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Số điện thoại">
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <input type="text" class="form-control" id="Province" name="province"
-                               placeholder="Tỉnh/Thành phố">
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <input type="text" class="form-control" id="districts" name="districts"
-                               placeholder="Quận/Huyện">
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <input type="text" class="form-control" id="wards" name="wards" placeholder="Phường/Xã">
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <input type="text" class="form-control" id="addressDetails" name="addressDetails"
-                               placeholder="Địa chỉ cụ thể: VD: Số nhà, đường...">
-                    </div>
+                    <h2>Địa chỉ giao hàng</h2>
+                    <c:if test="${listAddress.size()==0}">
+
+                        <h3>Danh sách địa chỉ giao hàng trống!</h3>
+
+                        <button class="genric-btn success arrow radius" data-toggle="modal"
+                                data-target="#exampleModalCenter">+ Thêm địa chỉ mới
+                        </button>
 
 
-                    <div class="col-md-12 form-group">
-                        <div class="creat_account">
-                            <h3>Lưu ý với đơn vị vận chuyển(Nếu có)</h3>
-                            <textarea class="form-control" name="message" id="message" rows="1"
-                                      placeholder="Lưu ý với người giao hàng"></textarea>
-                        </div>
-                    </div>
+                        <!-- Modal -->
+
+
+                    </c:if>
+                    <c:if test="${listAddress.size()!=0}">
+
+
+
+                        <table class="table ">
+                            <thead style="border: 2px solid rgba(255,193,22,0.16);
+border-radius: 7px;">
+                            <th></th>
+                            <th><label>Địa chỉ</label></th>
+                            <th><label>Địa chỉ cụ thể</label></th>
+                            <th><label>Số điện thoại</label></th>
+
+
+                            </thead>
+                            <tbody>
+                            <c:forEach var="item" items="${listAddress}">
+                                <tr style="border: 2px solid rgba(255,193,22,0.16);
+border-radius: 7px;">
+                                    <td>
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <input type="radio"  name="myRadios" id="checkCart${item.id}" value="${item.id}"
+                                                     onclick="tickAddress(${item.id})"  />
+
+
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <p> ${item.wards}, ${item.districts}, ${item.province}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <p> ${item.addressDetails}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <p> ${item.phone}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                        <button class="genric-btn success arrow radius" data-toggle="modal"
+                                data-target="#exampleModalCenter">+ Thêm địa chỉ mới
+                        </button>
+                    </c:if>
 
                 </div>
+
                 <div class="col-lg-6">
                     <h2>Thông tin đơn hàng</h2>
                     <div class="order_box">
@@ -125,6 +165,43 @@
         </div>
     </div>
 </section>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Thêm địa chỉ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12 form-group">
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Số điện thoại">
+                </div>
+                <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" id="Province" name="province"
+                           placeholder="Tỉnh/Thành phố">
+                </div>
+                <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" id="districts" name="districts"
+                           placeholder="Quận/Huyện">
+                </div>
+                <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" id="wards" name="wards" placeholder="Phường/Xã">
+                </div>
+                <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" id="addressDetails" name="addressDetails"
+                           placeholder="Địa chỉ cụ thể: VD: Số nhà, đường...">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="addNewAddress()">Tạo mới</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     function xacnhan() {
         Swal.fire({

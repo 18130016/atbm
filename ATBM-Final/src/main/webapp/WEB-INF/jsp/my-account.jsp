@@ -57,9 +57,9 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Thông tin tài khoản</a>
+                        <a class="nav-link " id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Thông tin tài khoản</a>
                         <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i>Đơn hàng</a>
-                        <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i class="fa fa-credit-card"></i>Chữ ký xác nhận</a>
+                        <a class="nav-link active" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i class="fa fa-credit-card"></i>Chữ ký xác nhận</a>
                         <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>Địa chỉ</a>
                         <a class="nav-link" href="/logout"><i class="fa fa-sign-out-alt"></i>Đăng xuất</a>
                     </div>
@@ -67,7 +67,7 @@
                 <div class="col-md-9">
                     <div class="tab-content">
 
-                        <div class="tab-pane fade show active" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
+                        <div class="tab-pane fade " id="account-tab" role="tabpanel" aria-labelledby="account-nav">
                             <h4>Thông tin tài khoản</h4>
                             <div class="row">
                                 <div class="col-md-12">
@@ -142,7 +142,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
+                        <div class="tab-pane fade show active" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
                             <h4>Chữ ký xác nhận</h4>
                             <div class="row">
                                 <div class="col-md-8">
@@ -158,20 +158,67 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
-                            <h4>Địa chỉ</h4>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h5>Payment Address</h5>
-                                    <p>123 Payment Street, Los Angeles, CA</p>
-                                    <p>Mobile: 012-345-6789</p>
-                                    <button class="btn">Edit Address</button>
+                            <div class="row"style="height: 100px;">
+                               <div class="col-md-8"><h4>Địa chỉ</h4></div>
+                                <div class="col-md-4">
+                                    <button class="genric-btn success arrow radius" data-toggle="modal" data-target="#exampleModalCenter">+ Thêm địa chỉ mới</button></div>
+
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Thêm địa chỉ</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="col-md-12 form-group">
+                                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Số điện thoại">
+                                                </div>
+                                                <div class="col-md-12 form-group">
+                                                    <input type="text" class="form-control" id="Province" name="province"
+                                                           placeholder="Tỉnh/Thành phố">
+                                                </div>
+                                                <div class="col-md-12 form-group">
+                                                    <input type="text" class="form-control" id="districts" name="districts"
+                                                           placeholder="Quận/Huyện">
+                                                </div>
+                                                <div class="col-md-12 form-group">
+                                                    <input type="text" class="form-control" id="wards" name="wards" placeholder="Phường/Xã">
+                                                </div>
+                                                <div class="col-md-12 form-group">
+                                                    <input type="text" class="form-control" id="addressDetails" name="addressDetails"
+                                                           placeholder="Địa chỉ cụ thể: VD: Số nhà, đường...">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                <button type="button" class="btn btn-primary" onclick="addNewAddress()">Tạo mới</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <h5>Shipping Address</h5>
-                                    <p>123 Shipping Street, Los Angeles, CA</p>
-                                    <p>Mobile: 012-345-6789</p>
-                                    <button class="btn">Edit Address</button>
-                                </div>
+                            </div>
+
+
+                            <div class="row" id="addressCre" style="max-height: 300px;overflow-y: scroll">
+<%--                                <div  id="addressCre"></div>--%>
+                                <c:forEach var="iaddress" items="${listAddress}">
+
+                                    <div  class="col-md-5" style=" margin:5px;padding: 10px;border: 1px solid #FF7856;
+border-radius: 15px 10px 13px 10px;" >
+                                        <h5>Địa chỉ giao hàng</h5>
+                                        <p>${iaddress.wards}, ${iaddress.districts},  ${iaddress.province}</p>
+                                        <p>Địa chỉ cụ thể: ${iaddress.addressDetails}</p>
+                                        <p>Số điện thoại: ${iaddress.phone}</p>
+                                        <button class="btn" onclick="deleteAddress(${iaddress.id})">Xóa</button>
+                                    </div>
+                                </c:forEach>
+
+
                             </div>
                         </div>
 

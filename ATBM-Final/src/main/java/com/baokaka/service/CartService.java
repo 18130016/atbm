@@ -1,8 +1,10 @@
 package com.baokaka.service;
 
+import com.baokaka.model.Address;
 import com.baokaka.model.CartItem;
 import com.baokaka.model.Product;
 import com.baokaka.model.User;
+import com.baokaka.reponsitory.AddressRepository;
 import com.baokaka.reponsitory.CartItemReponsitory;
 import com.baokaka.reponsitory.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class CartService {
     @Autowired
     private ProductRepository productRepo;
 
+    @Autowired
+    private AddressRepository addressRepository;
+
     public List<CartItem> listCartItems(User customer) {
         return cartRepo.findByCustomer(customer);
     }
@@ -31,6 +36,8 @@ public class CartService {
     }
 
     public List<CartItem> listChossePay = new ArrayList<>();
+    public Address addressChosse = new Address();
+
 
     public Integer addProduct(Long productId, Integer quantity, User customer) {
         Integer addedQuantity = quantity;
@@ -132,5 +139,12 @@ public class CartService {
 
     public void deleteCart(Long id) {
         cartRepo.deleteById(id);
+    }
+
+    public void insertDataAddress(Address address){
+        addressChosse = address;
+    }
+    public Address getAddressChosse(){
+        return addressChosse;
     }
 }

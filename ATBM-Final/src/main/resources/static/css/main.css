@@ -4562,16 +4562,17 @@ label {
     color: #222222;
     padding-bottom: 15px; }
   .order_box .list li a {
-    font-size: 14px;
+    font-size: 18px;
     color: #777777;
-    font-weight: normal;
+    font-weight: bold;
     border-bottom: 1px solid #eeeeee;
     display: block;
+    word-break: break-word;
     line-height: 42px; }
     .order_box .list li a span {
       float: right; }
     .order_box .list li a .middle {
-      float: none;
+      float: left;
       width: 50px;
       text-align: right;
       display: inline-block;
@@ -5795,7 +5796,27 @@ label {
 
 /*# sourceMappingURL=main.css.map */
 .vietnamdong:before { content:'đ'; }
- .abcxyz{
-  inline-size: 75px;
-   overflow-wrap: break-word;
+
+
+::-webkit-scrollbar-track
+{
+  border: 5px solid white;
+// border color does not support transparent on scrollbar
+// border-color: transparent;
+  background-color: #b2bec3;
+}
+
+::-webkit-scrollbar
+{
+  width: 5px;
+  background-color: #dfe6e9;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background-color: rgb(255, 132, 2);
+  border-radius: 10px;
+}
+.table1{
+  margin-top: 30px;
 }

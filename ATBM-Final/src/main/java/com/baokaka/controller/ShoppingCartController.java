@@ -1,9 +1,11 @@
 package com.baokaka.controller;
 
 
+import com.baokaka.model.Address;
 import com.baokaka.model.CartItem;
 import com.baokaka.model.Product;
 import com.baokaka.model.User;
+import com.baokaka.reponsitory.AddressRepository;
 import com.baokaka.service.CartService;
 import com.baokaka.service.ProductServices;
 import com.baokaka.service.UserService;
@@ -28,7 +30,8 @@ public class ShoppingCartController {
             cartService;
     @Autowired
     private UserService userService;
-//	@Autowired
+	@Autowired
+    AddressRepository addressRepository;
 //	private OrderRepository orderRepo;
 
 
@@ -117,6 +120,7 @@ return cartItemList;
         if (customer == null) {
             return "redirect:/login";
         }
+        model.addAttribute("listAddress",addressRepository.findByCustomer(customer));
         model.addAttribute("user",customer);
         model.addAttribute("listItem", cartService.getListChossePay());
         model.addAttribute("subTotal", cartService.totalPay());
@@ -126,6 +130,14 @@ return cartItemList;
 public @ResponseBody int checkStatusCart(){
     return cartService.getListChossePay().size();
 }
-
+@PostMapping("/tick-address")
+    public @ResponseBody String tickAddress(@RequestParam("adId") Long id, HttpServletRequest request){
+        Address address= addressRepository.findByIdAndCustomer(id,(User) request.getSession().getAttribute("user"));
+        if (address!=null){
+            cartService.insertDataAddress(address);
+            return "Bạn đã chọn địa chỉ giao hàng tại: "+address.getAddressDetails() +" - "+address.getWards()+" - "+address.getDistricts()+" - "+address.getProvince();
+        }
+        return null;
+    }
 
 }

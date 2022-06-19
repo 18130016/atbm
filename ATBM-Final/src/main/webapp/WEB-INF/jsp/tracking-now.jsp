@@ -4,7 +4,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <head>
     <meta charset="UTF-8">
-    <title>Cùng mua sắm ngay nào - Danh sách sản phẩm</title>
+    <title>Cùng mua sắm ngay nào- Xác nhận đơn hàng</title>
 
 
 </head>
@@ -15,10 +15,10 @@
     <div class="container">
         <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
             <div class="col-first">
-                <h1>Order Tracking</h1>
+                <h1>Trang xác nhận đơn hàng</h1>
                 <nav class="d-flex align-items-center">
-                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                    <a href="category.html">Fashon Category</a>
+                    <a href="/home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="/tracking-now">Xác nhận đơn hàng</a>
                 </nav>
             </div>
         </div>
@@ -40,9 +40,9 @@
                 </div>
 
                 <div class="col-md-12 form-group">
-                    <input type="text" class="form-control" id="decodeText" placeholder="Billing Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mã xác nhận'">
+                    <input type="text" class="form-control" id="decodeText" placeholder="Nhập mã xác nhận" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mã xác nhận'">
                 </div>
-                <div class="col-md-3 form-group">
+                <div class="col-md-5 form-group">
                     <button onclick="checkCodeOrder(${sessionScope.user.id})" class="primary-btn">Xác nhận đơn hàng</button>
                 </div>
             </div>

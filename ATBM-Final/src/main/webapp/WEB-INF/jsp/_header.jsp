@@ -79,7 +79,7 @@
                             <li class="nav-item submenu dropdown">
                                 <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown" role="button"
                                    aria-haspopup="true"
-                                   aria-expanded="false"><span class="fa fa-user-circle-o fa-2x"
+                                   aria-expanded="false"><span class="fa fa-user-circle-o"
                                                                style="margin-right: 10px"></span> Chào ${user.fullName}
                                 </a>
                                 <ul class="dropdown-menu">

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Cùng mua sắm ngay nào - Danh sách sản phẩm</title>
 
-
+        <link rel="stylesheet" href="../css/cart.css">
 </head>
 <%--header ở đaya--%>
 <%@ include file="_header.jsp" %>
@@ -44,34 +44,39 @@
         </div>
     </section>
 
-    <section class="cart_area section_gap">
-        <div class="container">
+    <section class="cart_area section_gap" style="padding: 70px">
+        <div class="container-fluid">
             <div class="cart_inner">
                 <div class="row">
                     <div class="col-lg-8" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; ">
-                        <table class="table">
+                        <table class=" table table1">
                             <thead>
                             <tr>
-                                <th scope="col"></th>
-                                <th scope="col"><p>Sản phẩm</p></th>
-                                <th scope="col"></th>
-                                <th scope="col"><p>Giá</p></th>
-                                <th scope="col"><p>Số lượng</p></th>
-                                <th scope="col"><p>Tổng</p></th>
-                                <th scope="col"></th>
+                                <th ></th>
+                                <th ><p>Sản phẩm</p></th>
+                                <th style="padding-left: 120px" ></th>
+
+
+                                <th><p>Giá</p></th>
+                                <th ><p>Số lượng</p></th>
+                                <th style="text-align: left"><p>Tổng</p></th>
+                                <th ></th>
+
                             </tr>
                             </thead>
                         </table>
-                        <div style="height: 800px;  overflow-y:scroll;float: left; ">
-                            <table class="table">
+                        <div class="scrollbar c" style="width: 100%;max-height: 800px;  overflow-y:scroll; ">
+                            <table class="table ">
                                 <tbody>
                                 <c:forEach items="${cartItems}" var="item">
                                     <tr>
                                         <td>
                                             <div class="media">
                                                 <div class="media-body">
-                                                    <input type="checkbox" id="checkCart${item.id}" value="${item.id}"
-                                                           onclick="checkCartItem('checkCart${item.id}',${item.id})">
+                                                    <input  type="checkbox" id="checkCart${item.id}" value="${item.id}"
+                                                           onclick="checkCartItem('checkCart${item.id}',${item.id})"/>
+
+
                                                 </div>
                                             </div>
                                         </td>
@@ -124,20 +129,26 @@
                     <div class="col-lg-4">
                         <div class="order_box">
                             <h2>Thanh toán đơn hàng</h2>
-                            <ul class="list" >
-                                <li><a href="#"  >Tên sản phẩm <span class="last"> Tổng</span></a></li>
-                                <li><a href="#" id="litao" > <span> </span></a></li>
+                            <ul class="list">
+                                <div class="scrollbar c" style="width:100%;max-height: 300px; overflow-y: auto  ">
+
+                                    <li><a href="#" class="word-break-aa">Tên sản phẩm <span class="last"> Tổng</span></a>
+                                    </li>
+                                    <li><a href="#" id="litao"> <span> </span></a></li>
+                                </div>
+
 
 
                             </ul>
                             <ul class="list list_2">
-                                <li><a href="#">Tổng giá trị <span class="myDIV">${subTotal}</span></a></li>
-                                <li><a href="#">Phí vận chuyển <span class="myDIV"> 25000</span></a></li>
-                                <li><a href="#">Tổng thanh toán(Tạm tính) <span class="myDIV">${subTotal+25000}</span></a></li>
+                                <li><a  >Tổng giá trị <span class="myDIV" id="total">${subTotal}</span></a></li>
+                                <li><a>Phí vận chuyển <span class="myDIV"> 25000</span></a></li>
+                                <li><a >Tổng thanh toán(Tạm tính) <span
+                                        class="myDIV" id="subTotal">${subTotal+25000}</span></a></li>
                             </ul>
 
 
-                                <a class="primary-btn" onclick="tocheckout()">Tiến hành thanh toán</a>
+                            <a class="primary-btn" onclick="tocheckout()">Tiến hành thanh toán</a>
 
                         </div>
                     </div>
@@ -146,6 +157,10 @@
         </div>
     </section>
 </c:if>
+
+<script>
+
+</script>
 <!--========
 ========End Cart Area =================-->
 </body>
