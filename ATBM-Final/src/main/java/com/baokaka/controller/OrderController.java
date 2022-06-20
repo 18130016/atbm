@@ -37,9 +37,9 @@ public class OrderController {
      }
      orderServices.createOder(orderServices.orderCode,user);
 
-     model.addAttribute("oder",orderServices.showOrderDetails(orderServices.orderCode));
+        model.addAttribute("oder",orderServices.showOrderDetails(orderServices.orderCode));
         model.addAttribute("listItem",orderServices.listItemOderByCode);
-model.addAttribute("address",orderServices.addressByOrderCode);
+        model.addAttribute("address",orderServices.addressByOrderCode);
          return "/confirmation";
 
  }

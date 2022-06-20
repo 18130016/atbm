@@ -101,45 +101,894 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead class="thead-dark">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Product</th>
-                                        <th>Date</th>
-                                        <th>Price</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Product Name</td>
-                                        <td>01 Jan 2020</td>
-                                        <td>$99</td>
-                                        <td>Approved</td>
-                                        <td><button class="btn">View</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Product Name</td>
-                                        <td>01 Jan 2020</td>
-                                        <td>$99</td>
-                                        <td>Approved</td>
-                                        <td><button class="btn">View</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Product Name</td>
-                                        <td>01 Jan 2020</td>
-                                        <td>$99</td>
-                                        <td>Approved</td>
-                                        <td><button class="btn">View</button></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="justify-content: space-between">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-tab-1" data-toggle="pill" href="#pills-1" role="tab" aria-controls="pills-1" aria-selected="true">Tất cả</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-tab-2" data-toggle="pill" href="#pills-2" role="tab" aria-controls="pills-2" aria-selected="false">Chờ xử lý</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-tab-3" data-toggle="pill" href="#pills-3" role="tab" aria-controls="pills-3" aria-selected="false">Đã xác nhận</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-tab-4" data-toggle="pill" href="#pills-4" role="tab" aria-controls="pills-4" aria-selected="false">Đang giao</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-tab-5" data-toggle="pill" href="#pills-5" role="tab" aria-controls="pills-5" aria-selected="false">Đã giao</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-tab-6" data-toggle="pill" href="#pills-6" role="tab" aria-controls="pills-6" aria-selected="false">Đã hủy</a>
+                                    </li>
+                                </ul>
+
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-tab-1">
+                                    <div class="list-order-item">
+                                        <div class="order-detail">
+                                            <div class="order-status">
+                                                <h5>Trạng thái | <span>Chờ xác nhận</span></h5>
+                                            </div>
+                                                <div class="order-item">
+                                                    <div class="order-header">
+                                                        <div class="content">
+                                                            <p>Chi tiết đơn hàng</p>
+                                                            <p>Mã đơn hàng:</p>
+                                                            <p>Mã giảm giá:</p>
+                                                            <p>Thời gian:</p>
+                                                        </div>
+
+                                                        <div class="address">
+                                                            <p>Địa chỉ giao hàng</p>
+                                                            <p>Tên người nhận:</p>
+                                                            <p>Số điện thoại:</p>
+                                                            <p>Địa chỉ:</p>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="order-body">
+                                                        <p>Danh sách sản phẩm:</p>
+                                                        <div class="card card-body" >
+                                                            <table>
+                                                                <thead>
+                                                                <th>Sản phẩm</th>
+                                                                <th>Số lượng</th>
+                                                                <th>Đơn giá</th>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>Giay cua bao</td>
+                                                                    <td>123</td>
+                                                                    <td>12321312</td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                    <hr>
+                                                    <div class="order-footer">
+                                                        <p>Tổng: <span>123123123</span></p>
+                                                        <button class="primary-btn">Hủy</button>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        <div class="order-detail">
+                                            <div class="order-status">
+                                                <h5>Trạng thái | <span>Chờ xác nhận</span></h5>
+                                            </div>
+                                            <div class="order-item">
+                                                <div class="order-header">
+                                                    <div class="content">
+                                                        <p>Chi tiết đơn hàng</p>
+                                                        <p>Mã đơn hàng:</p>
+                                                        <p>Mã giảm giá:</p>
+                                                        <p>Thời gian:</p>
+                                                    </div>
+
+                                                    <div class="address">
+                                                        <p>Địa chỉ giao hàng</p>
+                                                        <p>Tên người nhận:</p>
+                                                        <p>Số điện thoại:</p>
+                                                        <p>Địa chỉ:</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="order-body">
+                                                    <p>Danh sách sản phẩm:</p>
+                                                    <div class="card card-body" >
+                                                        <table>
+                                                            <thead>
+                                                            <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Giay cua bao</td>
+                                                                <td>123</td>
+                                                                <td>12321312</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="order-footer">
+                                                    <p>Tổng: <span>123123123</span></p>
+                                                    <button class="primary-btn">Hủy</button>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="order-detail">
+                                            <div class="order-status">
+                                                <h5>Trạng thái | <span>Chờ xác nhận</span></h5>
+                                            </div>
+                                            <div class="order-item">
+                                                <div class="order-header">
+                                                    <div class="content">
+                                                        <p>Chi tiết đơn hàng</p>
+                                                        <p>Mã đơn hàng:</p>
+                                                        <p>Mã giảm giá:</p>
+                                                        <p>Thời gian:</p>
+                                                    </div>
+
+                                                    <div class="address">
+                                                        <p>Địa chỉ giao hàng</p>
+                                                        <p>Tên người nhận:</p>
+                                                        <p>Số điện thoại:</p>
+                                                        <p>Địa chỉ:</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="order-body">
+                                                    <p>Danh sách sản phẩm:</p>
+                                                    <div class="card card-body" >
+                                                        <table>
+                                                            <thead>
+                                                            <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Giay cua bao</td>
+                                                                <td>123</td>
+                                                                <td>12321312</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="order-footer">
+                                                    <p>Tổng: <span>123123123</span></p>
+                                                    <button class="primary-btn">Hủy</button>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-tab-2">
+                                        <div class="order-detail">
+                                            <div class="order-status">
+                                                <h5>Trạng thái | <span>Chờ xác nhận</span></h5>
+                                            </div>
+                                            <div class="list-order-item">
+                                                <div class="order-item">
+                                                    <div class="order-header">
+                                                        <div class="content">
+                                                            <p>Chi tiết đơn hàng</p>
+                                                            <p>Mã đơn hàng:</p>
+                                                            <p>Mã giảm giá:</p>
+                                                            <p>Thời gian:</p>
+                                                        </div>
+
+                                                        <div class="address">
+                                                            <p>Địa chỉ giao hàng</p>
+                                                            <p>Tên người nhận:</p>
+                                                            <p>Số điện thoại:</p>
+                                                            <p>Địa chỉ:</p>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="order-body">
+                                                        <p>Danh sách sản phẩm:</p>
+                                                        <div class="card card-body" >
+                                                            <table>
+                                                                <thead>
+                                                                <th>Sản phẩm</th>
+                                                                <th>Số lượng</th>
+                                                                <th>Đơn giá</th>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>Giay cua bao</td>
+                                                                    <td>123</td>
+                                                                    <td>12321312</td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                    <hr>
+                                                    <div class="order-footer">
+                                                        <p>Tổng: <span>123123123</span></p>
+                                                        <button class="primary-btn">Hủy</button>
+                                                    </div>
+
+                                                </div>
+                                                <div class="order-item">
+                                                    <div class="order-header">
+                                                        <div class="content">
+                                                            <p>Chi tiết đơn hàng</p>
+                                                            <p>Mã đơn hàng:</p>
+                                                            <p>Mã giảm giá:</p>
+                                                            <p>Thời gian:</p>
+                                                        </div>
+
+                                                        <div class="address">
+                                                            <p>Địa chỉ giao hàng</p>
+                                                            <p>Tên người nhận:</p>
+                                                            <p>Số điện thoại:</p>
+                                                            <p>Địa chỉ:</p>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="order-body">
+                                                        <p>Danh sách sản phẩm:</p>
+                                                        <div class="card card-body" >
+                                                            <table>
+                                                                <thead>
+                                                                <th>Sản phẩm</th>
+                                                                <th>Số lượng</th>
+                                                                <th>Đơn giá</th>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>Giay cua bao</td>
+                                                                    <td>123</td>
+                                                                    <td>12321312</td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                    <hr>
+                                                    <div class="order-footer">
+                                                        <p>Tổng: <span>123123123</span></p>
+                                                        <button class="primary-btn">Hủy</button>
+                                                    </div>
+
+                                                </div>
+                                                <div class="order-item">
+                                                    <div class="order-header">
+                                                        <div class="content">
+                                                            <p>Chi tiết đơn hàng</p>
+                                                            <p>Mã đơn hàng:</p>
+                                                            <p>Mã giảm giá:</p>
+                                                            <p>Thời gian:</p>
+                                                        </div>
+
+                                                        <div class="address">
+                                                            <p>Địa chỉ giao hàng</p>
+                                                            <p>Tên người nhận:</p>
+                                                            <p>Số điện thoại:</p>
+                                                            <p>Địa chỉ:</p>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="order-body">
+                                                        <p>Danh sách sản phẩm:</p>
+                                                        <div class="card card-body" >
+                                                            <table>
+                                                                <thead>
+                                                                <th>Sản phẩm</th>
+                                                                <th>Số lượng</th>
+                                                                <th>Đơn giá</th>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>Giay cua bao</td>
+                                                                    <td>123</td>
+                                                                    <td>12321312</td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                    <hr>
+                                                    <div class="order-footer">
+                                                        <p>Tổng: <span>123123123</span></p>
+                                                        <button class="primary-btn">Hủy</button>
+                                                    </div>
+
+                                                </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-3" role="tabpanel" aria-labelledby="pills-tab-3">
+                                    <div class="order-detail">
+                                        <div class="order-status">
+                                            <h5>Trạng thái | <span>Chờ xác nhận</span></h5>
+                                        </div>
+                                        <div class="list-order-item">
+                                            <div class="order-item">
+                                                <div class="order-header">
+                                                    <div class="content">
+                                                        <p>Chi tiết đơn hàng</p>
+                                                        <p>Mã đơn hàng:</p>
+                                                        <p>Mã giảm giá:</p>
+                                                        <p>Thời gian:</p>
+                                                    </div>
+
+                                                    <div class="address">
+                                                        <p>Địa chỉ giao hàng</p>
+                                                        <p>Tên người nhận:</p>
+                                                        <p>Số điện thoại:</p>
+                                                        <p>Địa chỉ:</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="order-body">
+                                                    <p>Danh sách sản phẩm:</p>
+                                                    <div class="card card-body" >
+                                                        <table>
+                                                            <thead>
+                                                            <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Giay cua bao</td>
+                                                                <td>123</td>
+                                                                <td>12321312</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="order-footer">
+                                                    <p>Tổng: <span>123123123</span></p>
+                                                    <button class="primary-btn">Hủy</button>
+                                                </div>
+
+                                            </div>
+                                            <div class="order-item">
+                                                <div class="order-header">
+                                                    <div class="content">
+                                                        <p>Chi tiết đơn hàng</p>
+                                                        <p>Mã đơn hàng:</p>
+                                                        <p>Mã giảm giá:</p>
+                                                        <p>Thời gian:</p>
+                                                    </div>
+
+                                                    <div class="address">
+                                                        <p>Địa chỉ giao hàng</p>
+                                                        <p>Tên người nhận:</p>
+                                                        <p>Số điện thoại:</p>
+                                                        <p>Địa chỉ:</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="order-body">
+                                                    <p>Danh sách sản phẩm:</p>
+                                                    <div class="card card-body" >
+                                                        <table>
+                                                            <thead>
+                                                            <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Giay cua bao</td>
+                                                                <td>123</td>
+                                                                <td>12321312</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="order-footer">
+                                                    <p>Tổng: <span>123123123</span></p>
+                                                    <button class="primary-btn">Hủy</button>
+                                                </div>
+
+                                            </div>
+                                            <div class="order-item">
+                                                <div class="order-header">
+                                                    <div class="content">
+                                                        <p>Chi tiết đơn hàng</p>
+                                                        <p>Mã đơn hàng:</p>
+                                                        <p>Mã giảm giá:</p>
+                                                        <p>Thời gian:</p>
+                                                    </div>
+
+                                                    <div class="address">
+                                                        <p>Địa chỉ giao hàng</p>
+                                                        <p>Tên người nhận:</p>
+                                                        <p>Số điện thoại:</p>
+                                                        <p>Địa chỉ:</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="order-body">
+                                                    <p>Danh sách sản phẩm:</p>
+                                                    <div class="card card-body" >
+                                                        <table>
+                                                            <thead>
+                                                            <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Giay cua bao</td>
+                                                                <td>123</td>
+                                                                <td>12321312</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="order-footer">
+                                                    <p>Tổng: <span>123123123</span></p>
+                                                    <button class="primary-btn">Hủy</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-4" role="tabpanel" aria-labelledby="pills-tab-4">
+                                    <div class="order-detail">
+                                        <div class="order-status">
+                                            <h5>Trạng thái | <span>Chờ xác nhận</span></h5>
+                                        </div>
+                                        <div class="list-order-item">
+                                            <div class="order-item">
+                                                <div class="order-header">
+                                                    <div class="content">
+                                                        <p>Chi tiết đơn hàng</p>
+                                                        <p>Mã đơn hàng:</p>
+                                                        <p>Mã giảm giá:</p>
+                                                        <p>Thời gian:</p>
+                                                    </div>
+
+                                                    <div class="address">
+                                                        <p>Địa chỉ giao hàng</p>
+                                                        <p>Tên người nhận:</p>
+                                                        <p>Số điện thoại:</p>
+                                                        <p>Địa chỉ:</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="order-body">
+                                                    <p>Danh sách sản phẩm:</p>
+                                                    <div class="card card-body" >
+                                                        <table>
+                                                            <thead>
+                                                            <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Giay cua bao</td>
+                                                                <td>123</td>
+                                                                <td>12321312</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="order-footer">
+                                                    <p>Tổng: <span>123123123</span></p>
+                                                    <button class="primary-btn">Hủy</button>
+                                                </div>
+
+                                            </div>
+                                            <div class="order-item">
+                                                <div class="order-header">
+                                                    <div class="content">
+                                                        <p>Chi tiết đơn hàng</p>
+                                                        <p>Mã đơn hàng:</p>
+                                                        <p>Mã giảm giá:</p>
+                                                        <p>Thời gian:</p>
+                                                    </div>
+
+                                                    <div class="address">
+                                                        <p>Địa chỉ giao hàng</p>
+                                                        <p>Tên người nhận:</p>
+                                                        <p>Số điện thoại:</p>
+                                                        <p>Địa chỉ:</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="order-body">
+                                                    <p>Danh sách sản phẩm:</p>
+                                                    <div class="card card-body" >
+                                                        <table>
+                                                            <thead>
+                                                            <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Giay cua bao</td>
+                                                                <td>123</td>
+                                                                <td>12321312</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="order-footer">
+                                                    <p>Tổng: <span>123123123</span></p>
+                                                    <button class="primary-btn">Hủy</button>
+                                                </div>
+
+                                            </div>
+                                            <div class="order-item">
+                                                <div class="order-header">
+                                                    <div class="content">
+                                                        <p>Chi tiết đơn hàng</p>
+                                                        <p>Mã đơn hàng:</p>
+                                                        <p>Mã giảm giá:</p>
+                                                        <p>Thời gian:</p>
+                                                    </div>
+
+                                                    <div class="address">
+                                                        <p>Địa chỉ giao hàng</p>
+                                                        <p>Tên người nhận:</p>
+                                                        <p>Số điện thoại:</p>
+                                                        <p>Địa chỉ:</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="order-body">
+                                                    <p>Danh sách sản phẩm:</p>
+                                                    <div class="card card-body" >
+                                                        <table>
+                                                            <thead>
+                                                            <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Giay cua bao</td>
+                                                                <td>123</td>
+                                                                <td>12321312</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="order-footer">
+                                                    <p>Tổng: <span>123123123</span></p>
+                                                    <button class="primary-btn">Hủy</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-5" role="tabpanel" aria-labelledby="pills-tab-5">
+                                    <div class="order-detail">
+                                        <div class="order-status">
+                                            <h5>Trạng thái | <span>Chờ xác nhận</span></h5>
+                                        </div>
+                                        <div class="list-order-item">
+                                            <div class="order-item">
+                                                <div class="order-header">
+                                                    <div class="content">
+                                                        <p>Chi tiết đơn hàng</p>
+                                                        <p>Mã đơn hàng:</p>
+                                                        <p>Mã giảm giá:</p>
+                                                        <p>Thời gian:</p>
+                                                    </div>
+
+                                                    <div class="address">
+                                                        <p>Địa chỉ giao hàng</p>
+                                                        <p>Tên người nhận:</p>
+                                                        <p>Số điện thoại:</p>
+                                                        <p>Địa chỉ:</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="order-body">
+                                                    <p>Danh sách sản phẩm:</p>
+                                                    <div class="card card-body" >
+                                                        <table>
+                                                            <thead>
+                                                            <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Giay cua bao</td>
+                                                                <td>123</td>
+                                                                <td>12321312</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="order-footer">
+                                                    <p>Tổng: <span>123123123</span></p>
+                                                    <button class="primary-btn">Hủy</button>
+                                                </div>
+
+                                            </div>
+                                            <div class="order-item">
+                                                <div class="order-header">
+                                                    <div class="content">
+                                                        <p>Chi tiết đơn hàng</p>
+                                                        <p>Mã đơn hàng:</p>
+                                                        <p>Mã giảm giá:</p>
+                                                        <p>Thời gian:</p>
+                                                    </div>
+
+                                                    <div class="address">
+                                                        <p>Địa chỉ giao hàng</p>
+                                                        <p>Tên người nhận:</p>
+                                                        <p>Số điện thoại:</p>
+                                                        <p>Địa chỉ:</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="order-body">
+                                                    <p>Danh sách sản phẩm:</p>
+                                                    <div class="card card-body" >
+                                                        <table>
+                                                            <thead>
+                                                            <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Giay cua bao</td>
+                                                                <td>123</td>
+                                                                <td>12321312</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="order-footer">
+                                                    <p>Tổng: <span>123123123</span></p>
+                                                    <button class="primary-btn">Hủy</button>
+                                                </div>
+
+                                            </div>
+                                            <div class="order-item">
+                                                <div class="order-header">
+                                                    <div class="content">
+                                                        <p>Chi tiết đơn hàng</p>
+                                                        <p>Mã đơn hàng:</p>
+                                                        <p>Mã giảm giá:</p>
+                                                        <p>Thời gian:</p>
+                                                    </div>
+
+                                                    <div class="address">
+                                                        <p>Địa chỉ giao hàng</p>
+                                                        <p>Tên người nhận:</p>
+                                                        <p>Số điện thoại:</p>
+                                                        <p>Địa chỉ:</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="order-body">
+                                                    <p>Danh sách sản phẩm:</p>
+                                                    <div class="card card-body" >
+                                                        <table>
+                                                            <thead>
+                                                            <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Giay cua bao</td>
+                                                                <td>123</td>
+                                                                <td>12321312</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="order-footer">
+                                                    <p>Tổng: <span>123123123</span></p>
+                                                    <button class="primary-btn">Hủy</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-6" role="tabpanel" aria-labelledby="pills-tab-6">
+                                    <div class="order-detail">
+                                        <div class="order-status">
+                                            <h5>Trạng thái | <span>Chờ xác nhận</span></h5>
+                                        </div>
+                                        <div class="list-order-item">
+                                            <div class="order-item">
+                                                <div class="order-header">
+                                                    <div class="content">
+                                                        <p>Chi tiết đơn hàng</p>
+                                                        <p>Mã đơn hàng:</p>
+                                                        <p>Mã giảm giá:</p>
+                                                        <p>Thời gian:</p>
+                                                    </div>
+
+                                                    <div class="address">
+                                                        <p>Địa chỉ giao hàng</p>
+                                                        <p>Tên người nhận:</p>
+                                                        <p>Số điện thoại:</p>
+                                                        <p>Địa chỉ:</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="order-body">
+                                                    <p>Danh sách sản phẩm:</p>
+                                                    <div class="card card-body" >
+                                                        <table>
+                                                            <thead>
+                                                            <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Giay cua bao</td>
+                                                                <td>123</td>
+                                                                <td>12321312</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="order-footer">
+                                                    <p>Tổng: <span>123123123</span></p>
+                                                    <button class="primary-btn">Hủy</button>
+                                                </div>
+
+                                            </div>
+                                            <div class="order-item">
+                                                <div class="order-header">
+                                                    <div class="content">
+                                                        <p>Chi tiết đơn hàng</p>
+                                                        <p>Mã đơn hàng:</p>
+                                                        <p>Mã giảm giá:</p>
+                                                        <p>Thời gian:</p>
+                                                    </div>
+
+                                                    <div class="address">
+                                                        <p>Địa chỉ giao hàng</p>
+                                                        <p>Tên người nhận:</p>
+                                                        <p>Số điện thoại:</p>
+                                                        <p>Địa chỉ:</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="order-body">
+                                                    <p>Danh sách sản phẩm:</p>
+                                                    <div class="card card-body" >
+                                                        <table>
+                                                            <thead>
+                                                            <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Giay cua bao</td>
+                                                                <td>123</td>
+                                                                <td>12321312</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="order-footer">
+                                                    <p>Tổng: <span>123123123</span></p>
+                                                    <button class="primary-btn">Hủy</button>
+                                                </div>
+
+                                            </div>
+                                            <div class="order-item">
+                                                <div class="order-header">
+                                                    <div class="content">
+                                                        <p>Chi tiết đơn hàng</p>
+                                                        <p>Mã đơn hàng:</p>
+                                                        <p>Mã giảm giá:</p>
+                                                        <p>Thời gian:</p>
+                                                    </div>
+
+                                                    <div class="address">
+                                                        <p>Địa chỉ giao hàng</p>
+                                                        <p>Tên người nhận:</p>
+                                                        <p>Số điện thoại:</p>
+                                                        <p>Địa chỉ:</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="order-body">
+                                                    <p>Danh sách sản phẩm:</p>
+                                                    <div class="card card-body" >
+                                                        <table>
+                                                            <thead>
+                                                            <th>Sản phẩm</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Giay cua bao</td>
+                                                                <td>123</td>
+                                                                <td>12321312</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+                                                <div class="order-footer">
+                                                    <p>Tổng: <span>123123123</span></p>
+                                                    <button class="primary-btn">Hủy</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="tab-pane fade show active" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
