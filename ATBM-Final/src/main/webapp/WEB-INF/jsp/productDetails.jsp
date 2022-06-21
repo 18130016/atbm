@@ -108,8 +108,6 @@
                             </div>
                         </c:if>
 
-                        <a class="btn align-content-center" href="#"><i class=" lnr lnr-diamond"></i></a>
-                        <a class="btn" href="#"><i class=" lnr lnr-heart"></i></a>
                         <script type="text/javascript">
                             function addCart(){
                                 var qty = document.getElementById('sst').value;

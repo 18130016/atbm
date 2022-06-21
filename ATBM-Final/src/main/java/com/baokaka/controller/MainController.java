@@ -88,11 +88,14 @@ public class MainController {
 
     @GetMapping("/account")
     public String myAccountPage(Model model, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
         if (request.getSession().getAttribute("user") == null) {
             return "redirect:/login";
         }
-        model.addAttribute("listAddress", addressRepository.findByCustomer((User) request.getSession().getAttribute("user")));
-        model.addAttribute("user", (User) request.getSession().getAttribute("user"));
+        model.addAttribute("listAddress", addressRepository.findByCustomer(user));
+        model.addAttribute("user", user);
+        model.addAttribute("listOrder", orderServices.getOderItem(user));
+
         return "my-account";
     }
 
@@ -136,7 +139,7 @@ public class MainController {
         if (cartService.getListChossePay().size() == 0) {
             return "redirect:/cart";
         }
-        if(cartService.getAddressChosse().getId()==null){
+        if (cartService.getAddressChosse().getId() == null) {
             return "redirect:/checkout";
         }
         if (!keyService.checkExist(user.getId())) {

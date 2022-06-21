@@ -139,6 +139,7 @@ h5{
 
 .order-detail .order-item .order-header .content{
     text-align: left;
+    padding-right: 20px;
 }
 
 .order-detail .order-item .order-body{
@@ -158,6 +159,7 @@ h5{
 }
 .order-detail .order-item .order-footer p{
     margin: 0px;
+
 }
 
 .order-detail .order-item .order-footer span{
@@ -169,5 +171,25 @@ h5{
     border-radius: unset;
     padding: 0px 40px;
     border: unset;
+
+}
+.order-detail .order-item .order-header .content p{
+    font-weight: bold;
+    font-family: sans-serif;
+}
+.order-detail .order-item .order-header .address h5 span{
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #FF6347;
+
+}
+.order-detail .order-item .order-header .content h5 span{
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #FF6347;
+    word-break: break-word;
+}
+.order-detail{
+    padding: 15px;
 
 }

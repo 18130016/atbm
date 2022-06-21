@@ -21,9 +21,10 @@ public class OrderServices {
     CartService cartService;
     public String orderCode = null;
 
-    List<List<CartItem>> listItemOrderUsser = new ArrayList<>();
+  public   List<List<CartItem>> listItemOrderUsser = new ArrayList<>();
     public List<CartItem> listItemOderByCode = new ArrayList<>();
-    public Address addressByOrderCode =new Address();
+    public Address addressByOrderCode = new Address();
+
     public String createOderCode() {
         RandomCode randomCode = new RandomCode();
         orderCode = randomCode.randomAlphaNumeric(19);
@@ -87,12 +88,36 @@ public class OrderServices {
         return list;
     }
 
-    List<Order> orderList = new ArrayList<>();
+    public List<Order> orderList = new ArrayList<>();
 
     //    Lấy ra tất cả các đơn hàng
     public List<Order> getAllOrderByUser(User customer) {
         orderList = oderRepository.findOrderByCustomer(customer);
         return orderList;
+    }
+
+
+    /*
+     0 Là hủy
+     1 Là chờ xử lý
+     2 Đã xác nhận
+     3 Đang giao hàng
+     4 Đã giao thành công
+     */
+
+    public List<Order> getOrderByStatus(int status) {
+        List<Order> list = new ArrayList<>();
+        if (orderList.size() == 0) {
+            return null;
+        } else {
+            for (Order e : orderList
+            ) {
+                if (e.getOrder_status() == status) {
+                    list.add(e);
+                }
+            }
+            return list;
+        }
     }
 
 
@@ -109,18 +134,20 @@ public class OrderServices {
             CartItem item = new CartItem(productList.get(i), order.getCustomer(), integers.get(i));
             cartItems.add(item);
         }
-        listItemOderByCode= cartItems;
-        return listItemOderByCode;
+
+        return cartItems;
     }
+
+
 
 
     public void createOder(String code, User customer) {
         Date date = new Date();
-        Order order = new Order(code, customer, convertCodeToStringToken(cartService.getListChossePay()), convertQtyToStringToken(cartService.getListChossePay()), date, cartService.totalPay(), 1,cartService.getAddressChosse());
+        Order order = new Order(code, customer, convertCodeToStringToken(cartService.getListChossePay()), convertQtyToStringToken(cartService.getListChossePay()), date, cartService.totalPay(), 1, cartService.getAddressChosse());
         oderRepository.save(order);
-       List<CartItem> dele= cartService.getListChossePay();
-        for (CartItem item:dele
-             ) {
+        List<CartItem> dele = cartService.getListChossePay();
+        for (CartItem item : dele
+        ) {
             cartService.deleteCart(item.getId());
 
         }
@@ -128,13 +155,23 @@ public class OrderServices {
     }
 
 
-    public Order showOrderDetails(String code){
+    public Order showOrderDetails(String code) {
         Order order = oderRepository.getOrderByCode(code);
         getCartItemByIdOrder(order.getCode());
-        addressByOrderCode= order.getAddress();
+        addressByOrderCode = order.getAddress();
         return order;
     }
 
 
+    public List<OrderItem> getOderItem(User customer){
+        List<OrderItem>result= new ArrayList<>();
+        getAllOrderByUser(customer);
+        for (Order e: orderList
+             ) {
+            OrderItem item = new OrderItem(e.getId(), e.getCode(),customer,getCartItemByIdOrder(e.getCode()),e.getCreateDate(),e.getSubTotal(),e.getOrder_status(),e.getAddress());
+            result.add(item);
+        }
+        return result;
+    }
 
 }
