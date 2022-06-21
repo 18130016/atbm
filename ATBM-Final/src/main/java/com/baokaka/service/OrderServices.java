@@ -72,7 +72,6 @@ public class OrderServices {
             if (arrId[i] == "") break Outer;
             productList.add(productRepository.findProductById(Long.parseLong(arrId[i])));
         }
-        System.out.println(productList.size());
         return productList;
     }
 
@@ -84,7 +83,6 @@ public class OrderServices {
             if (arrId[i] == "") break Outer;
             list.add(Integer.valueOf(arrId[i]));
         }
-        System.out.println(list.size());
         return list;
     }
 
