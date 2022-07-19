@@ -34,8 +34,16 @@ public class OrderServices {
                 orderCode = randomCode.randomAlphaNumeric(19);
             } else return orderCode;
         }
+
+
         //Sẽ check code ở chỗ này
         return orderCode;
+    }
+    public  String codeHash = null;
+    public String createCodeHash() {
+        codeHash=cartService.getListChossePay().size() +orderCode+cartService.totalPay();
+
+        return codeHash;
     }
 
     public static String[] fomatList(String str) {
@@ -170,6 +178,9 @@ public class OrderServices {
             result.add(item);
         }
         return result;
+    }
+    public void deleteOrder(Long id){
+        oderRepository.deleteById(id);
     }
 
 }

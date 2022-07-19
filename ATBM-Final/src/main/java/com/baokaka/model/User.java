@@ -29,13 +29,18 @@ public class User implements Serializable{
 	String passWord;
 	@Column(name = "birthday")
 	String birthday;
-	public User(Long id, String fullName, String userName, String passWord, String birthday) {
-		this.id = id;
+
+	@Column(name="isAdmin")
+	int isAdmin;
+
+	public User(String fullName, String userName, String passWord, String birthday, int isAdmin) {
 		this.fullName = fullName;
 		this.userName = userName;
 		this.passWord = passWord;
 		this.birthday = birthday;
+		this.isAdmin = isAdmin;
 	}
+
 	public User() {
 	}
 	public Long getId() {
@@ -68,12 +73,15 @@ public class User implements Serializable{
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	
-	
-	
-	
-	
-	
+
+
+	public int getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(int isAdmin) {
+		this.isAdmin = isAdmin;
+	}
 }
 
 

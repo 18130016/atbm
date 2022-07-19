@@ -18,7 +18,7 @@ public interface CartItemReponsitory extends JpaRepository<CartItem,Long> {
     public CartItem findByCustomerAndProduct(User customer, Product product);
 
     public CartItem findByIdAndCustomer(Long id,User user);
-
+ public List<CartItem> findCartItemsByCustomer(User customer);
 
     @Query("DELETE FROM CartItem c WHERE c.customer.id = ?1 AND c.product.id = ?2")
     @Modifying

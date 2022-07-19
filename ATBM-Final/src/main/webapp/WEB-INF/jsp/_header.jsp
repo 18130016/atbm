@@ -35,7 +35,7 @@
         <nav class="navbar navbar-expand-lg navbar-light main_box">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+                <a class="navbar-brand logo_h" href="/home"><img src="img/logo.png" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,22 +51,16 @@
                             <a href="/danh-sach-san-pham" class="nav-link dropdown-toggle" data-toggle="dropdown"
                                role="button" aria-haspopup="true"
                                aria-expanded="false"><a class="nav-link" href="/danh-sach-san-pham">Sản phẩm</a></a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                                <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-                                <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                            </ul>
                         </li>
                         <li class="nav-item submenu dropdown ">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true"
-                               aria-expanded="false">Blog</a>
+                               aria-expanded="false">Thêm</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item active"><a class="nav-link" href="blog.html">Blog</a></li>
-                                <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+
+                                <li class="nav-item">
+<a class="nav-link">   Ứng dụng mã hóa</a>
+                                  </li>
                             </ul>
                         </li>
                         <li class="nav-item submenu dropdown">
@@ -83,6 +77,9 @@
                                                                style="margin-right: 10px"></span> Chào ${user.fullName}
                                 </a>
                                 <ul class="dropdown-menu">
+                                    <c:if test="${user.isAdmin==1}">
+                                    <li class="nav-item"><a class="nav-link" href="/adminPage">Trang quản trị</a></li>
+                                    </c:if>
                                     <li class="nav-item"><a class="nav-link" href="/account">Tài khoản của tôi</a></li>
                                     <li class="nav-item"><a class="nav-link" href="/logout">Đăng xuất</a></li>
                                 </ul>

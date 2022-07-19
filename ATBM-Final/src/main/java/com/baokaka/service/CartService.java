@@ -136,6 +136,12 @@ public class CartService {
     public void removeCartItem(Long productId, User customer) {
         cartRepo.deleteByCustomerAndProduct(customer.getId(), productId);
     }
+    public void removeCartItem(User customer) {
+        for ( CartItem cartItem:cartRepo.findCartItemsByCustomer(customer)
+             ) {
+            cartRepo.deleteByCustomerAndProduct(customer.getId(), cartItem.getProduct().getId());
+        }
+    }
 
     public void deleteCart(Long id) {
         cartRepo.deleteById(id);

@@ -5,6 +5,8 @@ import com.baokaka.reponsitory.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -40,6 +42,12 @@ public class UserService {
 
     public void updateUser(User user){
 
+    }
+    public void deleteUser(Long id){
+        userRepository.deleteById(id);
+    }
+    public List<User> getAllUser(){
+        return userRepository.findAll();
     }
 
 }

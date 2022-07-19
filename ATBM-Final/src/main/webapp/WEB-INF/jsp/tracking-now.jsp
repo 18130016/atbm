@@ -29,13 +29,25 @@
 <!--================Tracking Box Area =================-->
 <section class="tracking_box_area section_gap">
     <div class="container">
-        <div class="tracking_box_inner">
+        <div class="">
+            <p> Bạn có thể kiểm tra đơn hàng thông qua hash </p>
+            <div class="tracking_form row">
+                <div class="col-md-2 form-group">
+                    <span>MD5</span>
+
+                </div>
+                <div class="col-md-4 form-group">
+                    <input type="text" class="form-control" id="code-hash"  value="${hashcode}" disabled>
+                </div>
+
+            </div>
+
             <p>Nhập mã xác nhận để xác nhận đơn hàng</p>
             <div class="tracking_form row">
-                <div class="col-md-9 form-group">
+                <div class="col-md-10 form-group">
                     <input type="text" class="form-control" id="code-order"  value="${codeoder}" disabled>
                 </div>
-                <div class="col-md-3 form-group">
+                <div class="col-md-2 form-group">
                     <button  onclick="copyCodeOrder()" class="primary-btn">Sao chép</button>
                 </div>
 

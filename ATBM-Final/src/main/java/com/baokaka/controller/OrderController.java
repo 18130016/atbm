@@ -35,9 +35,9 @@ public class OrderController {
      if (orderServices.orderCode==null){
          return "/tracking-now";
      }
-     orderServices.createOder(orderServices.orderCode,user);
+     orderServices.createOder(orderServices.codeHash,user);
 
-        model.addAttribute("oder",orderServices.showOrderDetails(orderServices.orderCode));
+        model.addAttribute("oder",orderServices.showOrderDetails(orderServices.codeHash));
         model.addAttribute("listItem",orderServices.listItemOderByCode);
         model.addAttribute("address",orderServices.addressByOrderCode);
          return "/confirmation";

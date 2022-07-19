@@ -671,6 +671,22 @@ function addToCart(pid,qty){
     });
 }
 
+function deleteUser(uid){
+    $.ajax({
+        url: "/deleteUser",
+        type: "POST",
+        data: 'uid=' + uid,
+
+        success: function (data) {
+            Swal.fire(
+                'Đã xóa tài khoản',
+                'success'
+            )
+
+        }
+    });
+}
+
 function savePrivateKey(){
     let data = $('#privateKey').val();
     var blob = new Blob([data],
@@ -737,6 +753,34 @@ function checkCodeOrder(){
     }
     })
 }
+
+function checkHash(){
+    let text =  $('#decodeHash').val();
+    $.ajax({
+        url:"/checkHash",
+        type:"GET",
+        data:{
+            decodeText:text
+        },
+        success: function (data){
+            let t = data;
+            if(t=="true"){
+                Swal.fire(
+                   'Chính xác',
+                     'Thông tin trùng khớp với đơn hàng',
+                        'success');
+            }else {
+                Swal.fire(
+                    'Không chính xác',
+                    'Thông tin không trùng khớp với đơn hàng',
+                    'error'
+                )
+            }
+    }
+    })
+}
+
+
 function addNewAddress(){
     let phone =  $('#phone').val();
     let province =  $('#Province').val();

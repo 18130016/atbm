@@ -1,6 +1,7 @@
 package com.baokaka.controller;
 
 import com.baokaka.common.CreateKey;
+import com.baokaka.common.Md5;
 import com.baokaka.common.RSA;
 import com.baokaka.model.Address;
 import com.baokaka.model.Key;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.NoSuchAlgorithmException;
-import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -67,9 +67,15 @@ public class MainController {
         if (user != null) {
             if (userService.checkLogin(userName, passWord)) {
                 request.getSession().setAttribute("user", user);
-                return "redirect:/";
+                if (user.getIsAdmin() == 0) {
+                    return "redirect:/";
+                } else if (user.getIsAdmin() == 1) {
+                    return "redirect:/adminPage";
+                } else return "login";
+
             }
         }
+
         model.addAttribute("errorMessage", "error");
         return "login";
     }
@@ -79,9 +85,22 @@ public class MainController {
         model.addAttribute("registerForm", new User());
         return "register";
     }
+    @GetMapping("/adminPage")
+    public String adminPage(Model model, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            if (user.getIsAdmin() == 1) {
+                model.addAttribute("user", user);
+                return "adminPage";
+            }
+            else return "redirect:/";
+        }
+        return "redirect:/login";
+    }
 
     @PostMapping("/register")
     public String addUser(@ModelAttribute("registerForm") User user) {
+        user.setIsAdmin(0);
         userService.addUser(user);
         return "redirect:/login";
     }
@@ -146,14 +165,18 @@ public class MainController {
             return "redirect:account#payment-tab";
         }
         CreateKey keyCreate = new CreateKey();
-        orderServices.createOderCode();
-        String code = RSA.encryptText(orderServices.orderCode,
+orderServices.createOderCode();
+        orderServices.createCodeHash();
+
+        String code = RSA.encryptText(orderServices.codeHash,
                 keyCreate.convertPublicKey("RSA",
                         keyService.findPublicKeyByUserId(user.getId())
                 )
         );
-        model.addAttribute("codeoder", code);
-
+       String hashCode = Md5.md5(orderServices.codeHash);
+         model.addAttribute("codeoder", code);
+         model.addAttribute("hashcode", hashCode);
+        System.out.println(hashCode);
         return "tracking-now";
     }
 
@@ -161,7 +184,7 @@ public class MainController {
     @ResponseBody
     public String trackingOrder(@RequestParam("decodeText") String decodeText, HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
-        if (decodeText.equalsIgnoreCase(orderServices.orderCode)) {
+        if (decodeText.equalsIgnoreCase(orderServices.codeHash)) {
             return "true";
         }
         return "false";
