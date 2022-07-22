@@ -5802,7 +5802,7 @@ label {
 {
   border: 5px solid white;
 // border color does not support transparent on scrollbar
-// border-color: transparent;
+ border-color: transparent;
   background-color: #b2bec3;
 }
 
@@ -5815,7 +5815,7 @@ label {
 ::-webkit-scrollbar-thumb
 {
   background-color: rgb(255, 132, 2);
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .table1{
   margin-top: 30px;

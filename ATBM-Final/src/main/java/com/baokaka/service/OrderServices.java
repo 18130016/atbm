@@ -183,4 +183,26 @@ public class OrderServices {
         oderRepository.deleteById(id);
     }
 
+
+    public List<OrderItem>getAllOrderStore(){
+        List<OrderItem>result= new ArrayList<>();
+        List<Order>orderList=oderRepository.findAll();
+        for (Order e: orderList
+             ) {
+            OrderItem item = new OrderItem(e.getId(), e.getCode(),e.getCustomer(),getCartItemByIdOrder(e.getCode()),e.getCreateDate(),e.getSubTotal(),e.getOrder_status(),e.getAddress());
+            result.add(item);
+        }
+        return result;
+    }
+
+    public List<Order> getAllOrder() {
+        return oderRepository.findAll();
+    }
+
+    public Order findOrderById(Long id){
+        return oderRepository.findById(id).get();
+    }
+    public void updateOrder(Order order){
+        oderRepository.save(order);
+    }
 }

@@ -85,6 +85,7 @@ public class MainController {
         model.addAttribute("registerForm", new User());
         return "register";
     }
+
     @GetMapping("/adminPage")
     public String adminPage(Model model, HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
@@ -92,8 +93,7 @@ public class MainController {
             if (user.getIsAdmin() == 1) {
                 model.addAttribute("user", user);
                 return "adminPage";
-            }
-            else return "redirect:/";
+            } else return "redirect:/";
         }
         return "redirect:/login";
     }
@@ -165,7 +165,7 @@ public class MainController {
             return "redirect:account#payment-tab";
         }
         CreateKey keyCreate = new CreateKey();
-orderServices.createOderCode();
+        orderServices.createOderCode();
         orderServices.createCodeHash();
 
         String code = RSA.encryptText(orderServices.codeHash,
@@ -173,9 +173,9 @@ orderServices.createOderCode();
                         keyService.findPublicKeyByUserId(user.getId())
                 )
         );
-       String hashCode = Md5.md5(orderServices.codeHash);
-         model.addAttribute("codeoder", code);
-         model.addAttribute("hashcode", hashCode);
+        String hashCode = Md5.md5(orderServices.codeHash);
+        model.addAttribute("codeoder", code);
+        model.addAttribute("hashcode", hashCode);
         System.out.println(hashCode);
         return "tracking-now";
     }

@@ -1,5 +1,6 @@
 package com.baokaka.controller;
 
+import com.baokaka.model.Order;
 import com.baokaka.model.User;
 import com.baokaka.service.CartService;
 import com.baokaka.service.OrderServices;
@@ -42,6 +43,17 @@ public class OrderController {
         model.addAttribute("address",orderServices.addressByOrderCode);
          return "/confirmation";
 
+ }
+ @PostMapping("cancelOder")
+    public @ResponseBody String cancelOder(@RequestParam("oid") Long id,HttpServletRequest request){
+     if (request.getSession().getAttribute("user") == null) {
+         return "redirect:/login";
+     }else {
+         Order order = orderServices.findOrderById(id);
+         order.setOrder_status(0);
+         orderServices.updateOrder(order);
+         return "redirect:/my-account";
+     }
  }
 
 }

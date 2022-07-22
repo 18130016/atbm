@@ -35,4 +35,7 @@ private ProductRepository productRepository;
         }
         return productRepository.findAll();
     }
+    public void deleteByID(Long id) {
+        productRepository.deleteById(id);
+    }
 }

@@ -49,5 +49,14 @@ public class UserService {
     public List<User> getAllUser(){
         return userRepository.findAll();
     }
-
+    public void setAdmin(Long id){
+        User user = findById(id);
+        user.setIsAdmin(1);
+        userRepository.save(user);
+    }
+    public void setUser(Long id){
+        User user = findById(id);
+        user.setIsAdmin(0);
+        userRepository.save(user);
+    }
 }

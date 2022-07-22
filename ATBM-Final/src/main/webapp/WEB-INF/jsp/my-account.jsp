@@ -217,8 +217,28 @@
 
                                                         <hr>
                                                         <div class="order-footer">
+
+
                                                             <p>Tổng: <span class="myDIV">${item2.subTotal}</span></p>
-                                                            <button class="primary-btn">Hủy</button>
+                                                            <c:if test="${item2.order_status==1}">
+                                                                <button id="${item2.id}" onclick="cancelOder(this)" class="genric-btn primary-btn">Hủy</button>
+                                                            </c:if>
+                                                            <c:if test="${item2.order_status==2}">
+                                                                <button id="${item2.id}" onclick="cancelOder(this)"  class="genric-btn primary-btn">Hủy</button>
+                                                            </c:if>
+                                                            <c:if test="${item2.order_status==3}">
+                                                                <button id="${item2.id}" onclick="cancelOder(this)" class="genric-btn primary-btn">Hủy</button>
+                                                            </c:if>
+
+
+
+<%--                                                            <c:if test="${item2.order_status==2} ">--%>
+<%--                                                                <button  class="primary-btn">Hủy</button>--%>
+<%--                                                            </c:if>--%>
+<%--                                                            <c:if test="${item2.order_status==3} ">--%>
+<%--                                                                <button  class="primary-btn">Hủy</button>--%>
+<%--                                                            </c:if>--%>
+
                                                         </div>
 
                                                     </div>
@@ -687,7 +707,7 @@ border-radius: 15px 10px 13px 10px;">
                                             <h5>${iaddress.wards}, ${iaddress.districts}, ${iaddress.province}</h5>
                                             <h5>Địa chỉ cụ thể: ${iaddress.addressDetails}</h5>
                                             <h5>Số điện thoại: ${iaddress.phone}</h5>
-                                            <button class="btn" onclick="deleteAddress(${iaddress.id})">Xóa</button>
+                                            <button class="btn"  onclick="deleteAddress(${iaddress.id})">Xóa</button>
                                         </div>
                                     </c:forEach>
 

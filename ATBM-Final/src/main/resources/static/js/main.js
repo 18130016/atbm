@@ -590,7 +590,7 @@ function saveCart(id, pri, idIt, obj) {
             for (let i = 0, len = x.length; i < len; i++) {
                 let num = Number(x[i].innerHTML)
                     .toLocaleString('vn');
-                x[i].innerHTML = num+ '&#x20AB;';
+                x[i].innerHTML = num + '&#x20AB;';
 
             }
         }
@@ -614,19 +614,18 @@ function checkBoxCart(id, idItem) {
 
         success: function (data) {
             $('#litao').html("");
-            var text =""
-            var total=0;
-              for (let i = 0; i < data.length; i++) {
-                   text += '<li ="li'+data[i].id+'"><a  class="abcxyz">'+ data[i].product.name+'  x'+data[i].quantity+'</span> <span class="myDIV last">'+data[i].subtotal+'đ</span></a> </li>';
-                  total+=data[i].subtotal;
+            var text = ""
+            var total = 0;
+            for (let i = 0; i < data.length; i++) {
+                text += '<li ="li' + data[i].id + '"><a  class="abcxyz">' + data[i].product.name + '  x' + data[i].quantity + '</span> <span class="myDIV last">' + data[i].subtotal + 'đ</span></a> </li>';
+                total += data[i].subtotal;
             }
-            $('#litao').html(text )
-            $('#subTotal').html('<span className="myDIV" id="total">'+(total+25000)+'đ</span>');
-            $('#total').html('<span className="myDIV" id="total">'+total+'đ</span>');
+            $('#litao').html(text)
+            $('#subTotal').html('<span className="myDIV" id="total">' + (total + 25000) + 'đ</span>');
+            $('#total').html('<span className="myDIV" id="total">' + total + 'đ</span>');
 
             ;
         }
-
 
 
     });
@@ -641,23 +640,24 @@ function uncheckBoxCart(id, idItem) {
 
         success: function (data) {
             $('#litao').html("");
-            var text ="";
-            var total=0;
+            var text = "";
+            var total = 0;
             for (let i = 0; i < data.length; i++) {
-                    text += '<li  id="li'+data[i].id+'"><a  class="abcxyz" >'+ data[i].product.name+'  (x'+data[i].quantity+')</span> <span class="myDIV last" >'+data[i].subtotal+'đ</span></a> </li>';
-                total+=data[i].subtotal;
-                }
-            $('#litao').html(text );
-            $('#subTotal').html('<span className="myDIV" id="total">'+(total+25000)+'đ</span>');
-            $('#total').html('<span className="myDIV" id="total">'+total+'đ</span>');
+                text += '<li  id="li' + data[i].id + '"><a  class="abcxyz" >' + data[i].product.name + '  (x' + data[i].quantity + ')</span> <span class="myDIV last" >' + data[i].subtotal + 'đ</span></a> </li>';
+                total += data[i].subtotal;
             }
+            $('#litao').html(text);
+            $('#subTotal').html('<span className="myDIV" id="total">' + (total + 25000) + 'đ</span>');
+            $('#total').html('<span className="myDIV" id="total">' + total + 'đ</span>');
+        }
     });
 }
-function addToCart(pid,qty){
+
+function addToCart(pid, qty) {
     $.ajax({
         url: "/add-to-cart",
         type: "POST",
-        data: 'pid=' + pid+'&qty='+qty,
+        data: 'pid=' + pid + '&qty=' + qty,
 
         success: function (data) {
             $('#countCartSize').val(data);
@@ -671,7 +671,7 @@ function addToCart(pid,qty){
     });
 }
 
-function deleteUser(uid){
+function deleteUser(uid) {
     $.ajax({
         url: "/deleteUser",
         type: "POST",
@@ -687,115 +687,118 @@ function deleteUser(uid){
     });
 }
 
-function savePrivateKey(){
+function savePrivateKey() {
     let data = $('#privateKey').val();
     var blob = new Blob([data],
-        { type: "text/plain;charset=utf-8" });
+        {type: "text/plain;charset=utf-8"});
     saveAs(blob, "privateKey.txt");
 }
-function alertNoti(status,content,description){
+
+function alertNoti(status, content, description) {
     Swal.fire(
         content,
         description,
         status
     )
 }
-function tocheckout(){
+
+function tocheckout() {
     $.ajax({
         url: "/checkSize",
         type: "GET",
-        data:{} ,
+        data: {},
 
         success: function (data) {
 
             let dataResponse = data;
             if (dataResponse > 0) {
-               window.location = "/checkout";
+                window.location = "/checkout";
             } else {
-              alertNoti('info','Chưa chọn sản phẩm', 'Vui lòng chọn sản phẩm!')
+                alertNoti('info', 'Chưa chọn sản phẩm', 'Vui lòng chọn sản phẩm!')
             }
 
 
         }
     });
 }
-function codeOder(){
-  alertNoti('info','code nè');
+
+function codeOder() {
+    alertNoti('info', 'code nè');
 }
 
- function copyCodeOrder(){
-     var copyText =  document.getElementById("code-order");
-     /* Select the text field */
-     copyText.select();
-     copyText.setSelectionRange(0, 99999); /* For mobile devices */
+function copyCodeOrder() {
+    var copyText = document.getElementById("code-order");
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
-     /* Copy the text inside the text field */
-     navigator.clipboard.writeText(copyText.value);
-     alertNoti('info',"Đã sao chép");
- }
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(copyText.value);
+    alertNoti('info', "Đã sao chép");
+}
 
-function checkCodeOrder(){
-    let text =  $('#decodeText').val();
+function checkCodeOrder() {
+    let text = $('#decodeText').val();
     $.ajax({
-        url:"/tracking-order",
-        type:"GET",
-        data:{
-            decodeText:text
+        url: "/tracking-order",
+        type: "GET",
+        data: {
+            decodeText: text
         },
-        success: function (data){
+        success: function (data) {
             let t = data;
-            if(t=="true"){
-                alertNoti('info',"Xác nhận thành công");
-                window.location= "/xac-nhan-don-hang";
-            }else {
-                alertNoti('info',"Xác nhận thất bại");
+            if (t == "true") {
+                alertNoti('info', "Xác nhận thành công");
+                window.location = "/xac-nhan-don-hang";
+            } else {
+                alertNoti('info', "Xác nhận thất bại");
             }
-    }
+        }
     })
 }
 
-function checkHash(){
-    let text =  $('#decodeHash').val();
+function checkHash() {
+    let text = $('#decodeHash').val();
     $.ajax({
-        url:"/checkHash",
-        type:"GET",
-        data:{
-            decodeText:text
+        url: "/checkHash",
+        type: "GET",
+        data: {
+            decodeText: text
         },
-        success: function (data){
+        success: function (data) {
             let t = data;
-            if(t=="true"){
+            if (t == "true") {
                 Swal.fire(
-                   'Chính xác',
-                     'Thông tin trùng khớp với đơn hàng',
-                        'success');
-            }else {
+                    'Chính xác',
+                    'Thông tin trùng khớp với đơn hàng',
+                    'success');
+            } else {
                 Swal.fire(
                     'Không chính xác',
                     'Thông tin không trùng khớp với đơn hàng',
                     'error'
                 )
             }
-    }
+        }
     })
 }
 
 
-function addNewAddress(){
-    let phone =  $('#phone').val();
-    let province =  $('#Province').val();
-    let districts =  $('#districts').val();
-    let wards =  $('#wards').val();
-    let addressDetails =  $('#addressDetails').val();
+function addNewAddress() {
+    let phone = $('#phone').val();
+    let province = $('#Province').val();
+    let districts = $('#districts').val();
+    let wards = $('#wards').val();
+    let addressDetails = $('#addressDetails').val();
     $.ajax({
-        url:"/add-address",
-        type:"POST",
+        url: "/add-address",
+        type: "POST",
         data:
-            'phone='+phone+'&province='+province+'&districts='+districts+'&wards='+wards+'&addressDetails='+addressDetails
+            'phone=' + phone + '&province=' + province + '&districts=' + districts + '&wards=' + wards + '&addressDetails=' + addressDetails
         ,
-        success: function (data){
+        success: function (data) {
             let t = data;
-            if(t!=null){
+            if (t != null) {
 
                 // $('#addressCre').html("");
                 // var text ="";
@@ -804,47 +807,227 @@ function addNewAddress(){
                 //
                 // }
 
-                alertNoti('success',"Tạo địa chỉ thành công");
+                alertNoti('success', "Tạo địa chỉ thành công");
                 window.location.reload();
                 // $('#addressCre').html(text);
-            }else {
-                alertNoti('error',"Tạo địa chỉ thất bại");
+            } else {
+                alertNoti('error', "Tạo địa chỉ thất bại");
             }
         }
     })
 }
-function deleteAddress(id){
+
+function deleteAddress(id) {
     $.ajax({
-        url:"/delete-address",
-        type:"POST",
+        url: "/delete-address",
+        type: "POST",
         data:
             {adId: id},
-        success: function (data){
+        success: function (data) {
             let t = data;
-            if(t!=null){
-                alertNoti('success',"Đã xóa địa  chỉ thành công");
+            if (t != null) {
+                alertNoti('success', "Đã xóa địa  chỉ thành công");
 
                 setTimeout(() => window.location.reload(), 1500);
-            }else {
-                alertNoti('error',"Xóa địa chỉ thất bại");
-            }
-        }
-    })
-}
-function tickAddress(id){
-    $.ajax({
-        url:"/tick-address",
-        type:"POST",
-        data:
-            {adId: id},
-        success: function (data){
-            let t = data;
-            if(t!=null){
-                alertNoti('info',data);
-            }else {
-                alertNoti('error',"");
+            } else {
+                alertNoti('error', "Xóa địa chỉ thất bại");
             }
         }
     })
 }
 
+function tickAddress(id) {
+    $.ajax({
+        url: "/tick-address",
+        type: "POST",
+        data:
+            {adId: id},
+        success: function (data) {
+            let t = data;
+            if (t != null) {
+                alertNoti('info', data);
+            } else {
+                alertNoti('error', "");
+            }
+        }
+    })
+}
+
+function addNewUser() {
+    let fullName = $('#fullName').val();
+    let userName = $('#userName').val();
+    let birthday = $('#birthday').val();
+    let passWord = $('#passWord').val();
+
+    $.ajax({
+        url: "/add-user",
+        type: "POST",
+        data:
+            'fullName=' + fullName + '&userName=' + userName + '&birthday=' + birthday + '&passWord=' + passWord,
+        success: function (data) {
+            let t = data;
+            if (t != null) {
+
+                // $('#addressCre').html("");
+                // var text ="";
+                // for (let i = 0; i < data.length; i++) {
+                //  text += '<div className="col-md-6"> <h5>Địa chỉ giao hàng</h5> <p>'+data[i].wards +', '+data[i].districts+', '+ data[i].province+'</p> <p>Số điện thoại: '+data[i].phone+'</p> <button className="btn" onclick="deleteAddress('+data[i].id+')">Xóa</button></div>'
+                //
+                // }
+
+                alertNoti('success', "Thêm tài khoản thành công");
+                window.location.reload();
+                // $('#addressCre').html(text);
+            } else {
+                alertNoti('error', "Thêm tài khoản thất bại");
+            }
+        }
+    })
+
+}
+
+function updateOderAdmin(obj) {
+    var options = obj.children;
+    var html = '';
+    for (var i = 0; i < options.length; i++) {
+        if (options[i].selected) {
+            html = options[i].value;
+        }
+    }
+
+    // let e = document.getElementById('order_status_'+id).value;
+
+
+    $.ajax({
+
+        url: "/admin/order/updateStatus",
+        type: "POST",
+        data:
+            'status=' + html + '&oid=' + obj.id,
+        success: function (data) {
+            let t = data;
+            if (t != null) {
+
+
+                alertNoti('success', "Cập nhật đơn hàng thành công");
+                window.location.reload();
+                // $('#addressCre').html(text);
+            } else {
+                alertNoti('error', "Cập nhật đơn hàng thất bại");
+            }
+        }
+    })
+}
+
+function cancelOder(obj) {
+    $.ajax({
+        url: "/cancelOder",
+        type: "POST",
+        data:
+            {oid: obj.id},
+        success: function (data) {
+            let t = data;
+            if (t != null) {
+                alertNoti('success', "Đã hủy đơn hàng thành công");
+
+                setTimeout(() => window.location.reload(), 1500);
+            } else {
+                alertNoti('error', "Hủy đơn hàng thất bại");
+            }
+        }
+    })
+}
+
+function addAccount() {
+    let name = $('#name').val();
+    let price = $('#price').val();
+    let description = $('#description').val();
+    let image = $('#image').val();
+
+    var data = new FormData();
+    data.append('name', name);
+    data.append('price', price);
+    data.append('description', description);
+    $.ajax({
+        cache: false,
+        contentType: 'multipart/form-data',
+        processData: false,
+        url: "/new_product_process",
+        type: "POST",
+        data:data
+        ,
+        success: function (data) {
+            let t = data;
+            if (t != null) {
+                alertNoti('success', "Thêm sản phẩm thành công");
+                window.location.reload();
+            } else {
+                alertNoti('error', "Thêm sản phẩm thất bại");
+            }
+        }
+    })
+}
+$(document).ready(function() {
+    $('#loader').hide();
+    $("#submit").on("click", function() {
+        $("#submit").prop("disabled", true);
+        var name = $("#name").val();
+        var file = $("#image").val();
+        var price = $("#price").val();
+        var description = $("#description").val();
+        var form = $("#form").serialize();
+        var data = new FormData($("#form")[0]);
+        data.append('name', name);
+        data.append('price', price);
+        data.append('description', description);
+        //alert(data);
+        $('#loader').show();
+        if (name === "" || file === "" || price === "" || description === "") {
+            $("#submit").prop("disabled", false);
+            $('#loader').hide();
+            $("#name").css("border-color", "red");
+            $("#image").css("border-color", "red");
+            $("#price").css("border-color", "red");
+            $("#description").css("border-color", "red");
+            $("#error_name").html("Please fill the required field.");
+            $("#error_file").html("Please fill the required field.");
+            $("#error_price").html("Please fill the required field.");
+            $("#error_description").html("Please fill the required field.");
+        } else {
+            $("#name").css("border-color", "");
+            $("#image").css("border-color", "");
+            $("#price").css("border-color", "");
+            $("#description").css("border-color", "");
+            $('#error_name').css('opacity', 0);
+            $('#error_file').css('opacity', 0);
+            $('#error_price').css('opacity', 0);
+            $('#error_description').css('opacity', 0);
+            $.ajax({
+                type: 'POST',
+                enctype: 'multipart/form-data',
+                data: data,
+                url: "/new_product_process",
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(data) {
+                    let t = data;
+                    if (t != null) {
+                        alertNoti('success', "Thêm sản phẩm thành công");
+                        window.location.reload();
+                    } else {
+                        alertNoti('error', "Thêm sản phẩm thất bại");
+
+                    }
+                },
+                error: function(e) {
+                    $('#loader').hide();
+                    $('#error').css('display','block');
+                    $("#error").html("Oops! something went wrong.");
+                    $('#error').delay(5000).fadeOut('slow');
+                    location.reload();
+                }
+            });
+        }
+    });
+});
