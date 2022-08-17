@@ -16,7 +16,7 @@ public class KeyService {
 
     public boolean checkExist(Long userId){
         for(Key key:keyRepository.findAll()){
-            if(key.getUserId()==userId){
+            if(key.getUserId().equals(userId)){
                 return true;
             }
         }
@@ -29,7 +29,7 @@ public class KeyService {
 
     public Key findByUserId(Long userId){
         for(Key key:keyRepository.findAll()){
-            if(key.getUserId()==userId){
+            if(key.getUserId().equals(userId)){
                 return key;
             }
         }

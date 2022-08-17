@@ -161,7 +161,7 @@ public class MainController {
         if (cartService.getAddressChosse().getId() == null) {
             return "redirect:/checkout";
         }
-        if (!keyService.checkExist(user.getId())) {
+        if (keyService.checkExist(user.getId())==false) {
             return "redirect:account#payment-tab";
         }
         CreateKey keyCreate = new CreateKey();

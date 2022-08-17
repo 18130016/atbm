@@ -43,6 +43,7 @@
             </div>
 
             <p>Nhập mã xác nhận để xác nhận đơn hàng</p>
+            <p></p>
             <div class="tracking_form row">
                 <div class="col-md-10 form-group">
                     <input type="text" class="form-control" id="code-order"  value="${codeoder}" disabled>
@@ -56,6 +57,9 @@
                 </div>
                 <div class="col-md-5 form-group">
                     <button onclick="checkCodeOrder(${sessionScope.user.id})" class="primary-btn">Xác nhận đơn hàng</button>
+                </div>
+                <div class="col-md-12 form-group">
+                    <p>Bạn có thể tải phần mềm xác thực <a href="https://drive.google.com/file/d/18RziVqBo2IeCGNmD1MEs33z7_hmohksp/view?usp=sharing" target="_blank"> Tại đây</a></p>
                 </div>
             </div>
         </div>

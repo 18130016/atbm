@@ -59,7 +59,7 @@
                             <ul class="dropdown-menu">
 
                                 <li class="nav-item">
-<a class="nav-link">   Ứng dụng mã hóa</a>
+<a class="nav-link" href="https://drive.google.com/file/d/18RziVqBo2IeCGNmD1MEs33z7_hmohksp/view?usp=sharing" target="_blank">   Ứng dụng mã hóa</a>
                                   </li>
                             </ul>
                         </li>
